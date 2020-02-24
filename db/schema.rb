@@ -10,19 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_24_094651) do
+ActiveRecord::Schema.define(version: 2020_02_24_102338) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "contracts", force: :cascade do |t|
     t.text "description"
-    t.boolean "repaid_loan"
-    t.boolean "approved"
+    t.boolean "repaid_loan", default: false
+    t.boolean "approved", default: false
     t.date "due_date"
-    t.boolean "repaid_lender"
+    t.boolean "repaid_lender", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.bigint "loan_id"
+    t.index ["loan_id"], name: "index_contracts_on_loan_id"
+    t.index ["user_id"], name: "index_contracts_on_user_id"
   end
 
   create_table "loans", force: :cascade do |t|
@@ -31,6 +35,8 @@ ActiveRecord::Schema.define(version: 2020_02_24_094651) do
     t.decimal "interest_rate"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_loans_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
