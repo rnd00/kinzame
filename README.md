@@ -1,6 +1,5 @@
 
 # [Kinzame](http://kinzame.herokuapp.com/ "Kinzame")
----
 Cloud-based Loan Management Platform
 
 ## Development Guidelines
