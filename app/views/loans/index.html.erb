@@ -1,0 +1,4 @@
+<h1>Loans index</h1>
+<% @loans.each do |loan| %>
+  <p>Lender name:</p> <%= loan.user.first_name %>
+<% end %>
