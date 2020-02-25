@@ -3,7 +3,13 @@ Rails.application.routes.draw do
   root to: "pages#home"
 
   resources :loans do
-    resources :contracts, only: [:index, :show, :new, :create, :edit, :update]
+    resources :contracts, only: [:index, :new, :create]
   end
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  resources :contracts, only: [:show, :edit, :update] do
+    patch 'repaid_loan', to: "contracts#repaid_loan!"
+    patch 'approve', to: "contracts#approve!"
+    patch 'repaid_lender', to: "contracts#repaid_lender!"
+  end
+
 end
