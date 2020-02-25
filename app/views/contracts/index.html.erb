@@ -1,0 +1,7 @@
+<h1>Contracts Index</h1>
+<%= @contracts.each do |contract| %>
+  <p><%= contract.created_at %></p>
+  <p><%= contract.description %></p>
+  <p><%= contract.user.first_name %></p>
+  <p><%= contract.loan.user.first_name %></p>
+<% end %>
