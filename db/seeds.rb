@@ -52,7 +52,7 @@ loans.each do |loan|
       description: Faker::Lorem.words(number: 4),
       due_date: Date.today + (1..30).to_a.sample,
       loan: loan,
-      approved: [true, false].sample,
+      approved: [true, true, true, false].sample,
       user: User.find(((User.first.id+3)..User.where(lender: false).count).to_a.sample)
       )
   end
@@ -72,7 +72,7 @@ puts '...finished'
 puts 'setting some contracts to repaid_loan = true'
 repaid_contracts = Contract.where(repaid_loan: true)
 repaid_contracts.each do |contract|
-  contract.repaid_lender = [true, true, true, false].sample
+  contract.repaid_lender = [true, false].sample
 end
 puts '...finished'
 
