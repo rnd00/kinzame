@@ -1,7 +1,8 @@
 class ContractsController < ApplicationController
-  before_action :set_contract, only: [:show, :edit, :update]
+  before_action :set_contract, only: [:show, :edit, :update, :repaid_loan!, :approve!, :repaid_lender!]
   before_action :set_loan, only: [:new, :create, :edit, :update]
   #to do: add actions for sorting
+
   def index
     @contracts = Contract.all
   end
@@ -33,6 +34,21 @@ class ContractsController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def repaid_loan!
+    @contract.repaid_loan!
+    redirect_to loan_contracts_path
+  end
+
+  def approve!
+    @contract.approve!
+    redirect_to loan_contracts_path
+  end
+
+  def repaid_lender
+    @contract.repaid_lender!
+    redirect_to loan_contracts_path
   end
 
   private
