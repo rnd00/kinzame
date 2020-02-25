@@ -19,7 +19,8 @@ Cloud-based Loan Management Platform
 ## Running on your local
 
 - Checkout to `development` and then run `git fetch --all` and `git pull`
-- Run `rails db:migrate` to get the _migration_ running up to the latest version
+- Run bundle install and yarn install to make sure any newly added gems/packages are present
+- Run `rails db:create db:migrate` to get the _migration_ running up to the latest version
 - ~~run `rails db:seed` to get the db ready with seeds~~ We don't have that yet
 - Run `rails s` to get the server up **locally**
 
