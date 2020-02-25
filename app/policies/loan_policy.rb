@@ -4,6 +4,7 @@ class LoanPolicy < ApplicationPolicy
       scope.all
     end
   end
+
   # Index = Anyone can see all the loans available before login.
   # Show = Anyone can see one loan before login.
   # New = Anyone car create a new loan IF
@@ -14,18 +15,22 @@ class LoanPolicy < ApplicationPolicy
   # Destroy = Only the owner can destroy a loan.
 
   def show?
-    record.user == user
+    user_is_owner_or_admin?
   end
 
   def create?
-    user.lender
+    user.lender || user.admin
   end
 
   def update?
-    record.user == user
+    user_is_owner_or_admin?
   end
 
   def destroy?
-    record.user == user
+    user_is_owner_or_admin?
+  end
+
+  def user_is_owner_or_admin?
+    record.user == user || user.admin
   end
 end

@@ -1,0 +1,27 @@
+.btn-main {
+  background-color: #0050ff;
+  border-radius: $border-radius;
+  margin-right: $spacer * 2;
+  transition: 0.5s;
+  &:hover {
+    box-shadow: 2px 2px 2px 1px rgba(0,0,0,0.6);
+  }
+}
+.btn-approve {
+  background-color: #23d37b;
+  border-radius: $border-radius;
+  margin-right: $spacer * 2;
+  transition: 0.5s;
+  &:hover {
+    box-shadow: 2px 2px 2px 1px rgba(0,0,0,0.6);
+  }
+}
+.btn-reject {
+  background-color: #e23131;
+  border-radius: $border-radius;
+  margin-right: $spacer * 2;
+  transition: 0.5s;
+  &:hover {
+    box-shadow: 2px 2px 2px 1px rgba(0,0,0,0.6);
+  }
+}
