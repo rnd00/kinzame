@@ -1,6 +1,7 @@
 .navbar-lewagon {
   justify-content: space-between;
   background: $blue;
+  border-bottom: 1px solid $light-grey;
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -16,10 +17,23 @@
   align-items: center;
 }
 
-
+.nav-link {
+  color: $white !important;
+  text-shadow: 1px 1px 1px rgba(0,0,0,0.4) !important;
+  transition: 0.5s !important;
+  &:hover{
+    text-shadow: 2px 2px 2px rgba(0,0,0,0.6) !important;
+  }
+}
 
 .logo-text {
   font-family: $logo-font;
-  margin: 0;
   color: $white;
+  margin: 0;
+  font-size: 32px;
+  text-shadow: 1px 1px 1px rgba(0,0,0,0.4);
+  transition: 0.5s;
+  &:hover{
+    text-shadow: 2px 2px 2px rgba(0,0,0,0.6);
+  }
 }
