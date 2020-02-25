@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
-  root to: "home#index"
+  root to: "pages#home"
 
   resources :contracts, only: [:index, :show, :new, :create, :edit, :update]
 
