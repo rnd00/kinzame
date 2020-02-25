@@ -1,0 +1,32 @@
+.wrapper {
+  width: 100%;
+}
+
+.landing-user-stories-container {
+  display: flex;
+  justify-content: space-between;
+  padding: $spacer * 2;
+}
+
+.landing-user-story {
+  display: flex;
+  background-color: $white;
+  margin: auto $spacer * 3;
+  border: 1px solid $light-grey;
+  border-radius: 8px;
+}
+
+.landing-user-story-info {
+  padding: $spacer * 2;
+}
+
+.landing-user-story-image img{
+  width: 160px;
+  border-radius: $spacer;
+}
+
+.stars {
+  color: $yellow;
+}
+
+
