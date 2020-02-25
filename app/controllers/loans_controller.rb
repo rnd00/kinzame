@@ -13,10 +13,12 @@ class LoansController < ApplicationController
 
   def new
     @loan = Loan.new
+    authorize @loan
   end
 
   def create
     @loan = Loan.new(loan_params)
+    authorize @loan
     @loan.user = current_user
     if @loan.save
       redirect_to loan_path(@loan)
@@ -26,9 +28,11 @@ class LoansController < ApplicationController
   end
 
   def edit
+    authorize @loan
   end
 
   def update
+    authorize @loan
     if @loan.update(loan_params)
       redirect_to loan_path(@loan)
     else
@@ -51,6 +55,7 @@ class LoansController < ApplicationController
   end
 
   def destroy
+    authorize @loan
     @loan.destroy
     redirect_to loans_path
   end

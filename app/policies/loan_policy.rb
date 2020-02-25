@@ -14,15 +14,18 @@ class LoanPolicy < ApplicationPolicy
   # Destroy = Only the owner can destroy a loan.
 
   def show?
-    true
-  end
-
-  def new?
-    user.lender && user.active_loan?
+    record.user == user
   end
 
   def create?
-    true
+    user.lender && user.no_loan?
   end
 
+  def update?
+    record.user == user
+  end
+
+  def destroy?
+    record.user == user
+  end
 end

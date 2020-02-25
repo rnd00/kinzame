@@ -10,7 +10,7 @@ class User < ApplicationRecord
   validates :first_name, :last_name, presence: true
   validates :wallet, numericality: { only_integer: true }
 
-  def active_loan?
+  def no_loan?
     self.contracts.where(repaid_loan: true).empty?
   end
 
