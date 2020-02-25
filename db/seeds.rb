@@ -10,7 +10,7 @@ Contract.destroy_all
 Loan.destroy_all
 User.destroy_all
 
-User.create!(first_name: "Shinzo", last_name: "Abe", email: "admin@kinzame.com", password: "010203", wallet: "123456")
+User.create!(first_name: "Shinzo", last_name: "Abe", email: "admin@kinzame.com", password: "010203", wallet: "123456", admin: true)
 User.create!(first_name: "Adil", last_name: "Omary", email: "poorguy@kinzame.com", password: "123456", wallet: "0")
 User.create!(first_name: "Rich", last_name: "Guy", email: "rich@kinzame.com", password: "123123", wallet: "0")
 
