@@ -1,5 +1,6 @@
 class ContractsController < ApplicationController
   before_action :set_contract, only: [:show, :edit, :update]
+  before_action :set_loan, only: [:new, :create, :edit, :update]
   #to do: add actions for sorting
   def index
     @contracts = Contract.all
@@ -12,10 +13,12 @@ class ContractsController < ApplicationController
     @contract = Contract.new
   end
 
-  def save
-    contract = Contract.new(contract_params)
-    if contract.save
-      redirect_to contracts_path
+  def create
+    @contract = Contract.new(contract_params)
+    @contract.loan = @loan
+    @contract.user = current_user
+    if @contract.save
+      redirect_to loan_contract_path(id: @contract.id)
     else
       render :new
     end
@@ -25,14 +28,18 @@ class ContractsController < ApplicationController
   end
 
   def update
-    if @contract.update(user_params)
-      redirect_to contract_path(@contract)
+    if @contract.update(contract_params)
+      redirect_to loan_contract_path(id: @contract.id)
     else
       render :edit
     end
   end
 
   private
+
+  def set_loan
+    @loan = Loan.find(params[:loan_id])
+  end
 
   def set_contract
     @contract = Contract.find(params[:id])

@@ -1,0 +1,3 @@
+<h1>Loan show page</h1>
+<p>Lender name:</p> <%= @loan.user.first_name %>
+<%= link_to 'Delete', loan_path(@loan), method: "delete", class: 'text-primary' %>

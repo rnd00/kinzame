@@ -1,5 +1,5 @@
 class LoansController < ApplicationController
-  before_action :find_loan, only %i(show edit update)
+  before_action :set_loan, only: %i(show edit update destroy)
 
   def index
     @loans = Loan.all
@@ -11,18 +11,15 @@ class LoansController < ApplicationController
 
   def new
     @loan = Loan.new
-    @path = ''
   end
 
   def create
-    @loan = Loan.new(params_loan)
-    @contract = Contract.find(params[:contract_id])
-    @loan.contract = @contract
-
+    @loan = Loan.new(loan_params)
+    @loan.user = current_user
     if @loan.save
       redirect_to loan_path(@loan)
     else
-      render "contracts/show"
+      render :new
     end
   end
 
@@ -30,8 +27,8 @@ class LoansController < ApplicationController
   end
 
   def update
-    if @loan.update(params_loan)
-      redirect_to
+    if @loan.update(loan_params)
+      redirect_to loan_path(@loan)
     else
       render :edit
     end
@@ -58,12 +55,12 @@ class LoansController < ApplicationController
 
   private
 
-  def find_loan
-    Loan.find(params[:id])
+  def set_loan
+    @loan = Loan.find(params[:id])
   end
 
-  def params_loan
-    params.require(:loan).permit(:due_date,)
+  def loan_params
+    params.require(:loan).permit(:due_date, :amount, :duration, :interest_rate)
   end
 
   # def total_price(loan)
