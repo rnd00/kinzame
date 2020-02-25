@@ -1,12 +1,14 @@
 class LoansController < ApplicationController
   before_action :set_loan, only: %i(show edit update destroy)
+  skip_before_action :authenticate_user!, only: %i(index show)
 
   def index
-    @loans = Loan.all
+    @loans = policy_scope(Loan)
     #but only for the user when pundit will be install
   end
 
   def show
+    authorize @loan
   end
 
   def new
