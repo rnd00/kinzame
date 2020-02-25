@@ -18,7 +18,7 @@ class LoanPolicy < ApplicationPolicy
   end
 
   def create?
-    user.lender && user.no_loan?
+    user.lender
   end
 
   def update?
