@@ -5,6 +5,7 @@
   <% @pending.each do |pending_loan| %>
     <div class='card loan loan-pending'>
       <%= render "users/loan-card", contract: pending_loan %>
+      <%= link_to "Approve", contract_approve_path(pending_loan), method: "patch" , class: "btn btn-approve"   %>
     </div>
   <% end %>
   <h2>All contracts</h2>

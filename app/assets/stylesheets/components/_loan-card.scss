@@ -2,5 +2,14 @@
   margin-left: 180px;
 }
 .loan {
+  display: grid;
   width: 90%;
+  margin: $spacer * 2 0;
+  border-radius: $border-radius * 2;
+  padding: $spacer * 3;
+  background-color: $light-blue;
+}
+
+.loan-pending {
+  background-color: $yellow;
 }
