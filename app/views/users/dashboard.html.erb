@@ -12,10 +12,10 @@
     <div class='card loan loan-pending '>
       <%= render "users/loan-card", contract: pending_loan %>
        <div class='approval-buttons'>
-        <%= link_to contract_approve_path(pending_loan), method: "patch" , class: "btn btn-approve btn-circle m-0" do  %>
+        <%= link_to contract_approve_path(pending_loan), method: "patch" , class: "btn btn-approve btn-circle m-0 p-0" do  %>
           <i class="fas fa-check-circle"></i>
         <% end %>
-        <%= link_to contract_rejected_path(pending_loan), method: "patch" , class: "btn btn-reject btn-circle"  do %>
+        <%= link_to contract_rejected_path(pending_loan), method: "patch" , class: "btn btn-reject btn-circle p-0"  do %>
           <i class="fas fa-times-circle"></i>
         <% end %>
       </div>
