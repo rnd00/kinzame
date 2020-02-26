@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   def contracts_index
-    @contracts = (current_user.lender ? current_user.loan_contracts : current_user.contracts).order(due_date: :desc)
+    @contracts = (current_user.lender ? current_user.loan_contracts : current_user.contracts).order(:due_date)
+    @loans = current_user.loans
     authorize @contracts
   end
 end
