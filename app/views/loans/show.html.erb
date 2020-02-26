@@ -1,3 +1,9 @@
-<h1>Loan show page</h1>
-<p>Lender name:</p> <%= @loan.user.first_name %>
-<%= link_to 'Delete', loan_path(@loan), method: "delete", class: 'text-primary' %>
+<h1>Loan # <%= @loan.id %></h1>
+<div class="card">
+<h3>￥<%= @loan.amount %></h3>
+<p>Interest Rate: <%= @loan.interest_rate %>%</p>
+<p>Duration: <%= @loan.duration %> Days</p>
+<p>Potential return: ￥<%=
+    (@loan.amount + ( @loan.amount * @loan.interest_rate / 100 )).round
+    %></p>
+</div>
