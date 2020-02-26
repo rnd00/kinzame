@@ -1,0 +1,54 @@
+.form-container {
+  height: 75vh;
+  margin-top: 64px;
+}
+
+.loan-form {
+  width: 60%;
+  background-color: $white;
+  border: 1px solid $grey;
+  border-radius: $border-radius * 2;
+  padding: $spacer * 2;
+}
+
+.input-icon {
+  position: relative;
+}
+
+.input-icon > i {
+  position: absolute;
+  display: block;
+  transform: translate(0, -50%);
+  top: 72%;
+  left: 0%;
+  pointer-events: none;
+  width: 25px;
+  text-align: center;
+  font-style: normal;
+}
+
+.input-icon > input {
+  padding-left: 25px;
+  padding-right: 0;
+}
+
+
+.input-icon-right > i {
+  left: 10%;
+}
+
+.input-icon-right > input {
+  padding-left: 0;
+  padding-right: 25px;
+  text-align: right;
+}
+
+
+#loan_amount {
+  padding-left: 24px !important;
+}
+
+.amount-details {
+  margin: 0;
+  padding: 0;
+}
