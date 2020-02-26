@@ -3,12 +3,22 @@
   margin-top: 64px;
 }
 
+.form-container > h1 {
+  text-align: center;
+  margin: 8px auto;
+}
+
 .loan-form {
-  width: 60%;
+  width: 36%;
   background-color: $white;
   border: 1px solid $grey;
   border-radius: $border-radius * 2;
   padding: $spacer * 2;
+  margin: 0 auto;
+}
+
+.loan-form-inline {
+  margin: 8px auto;
 }
 
 .input-icon {
@@ -19,7 +29,7 @@
   position: absolute;
   display: block;
   transform: translate(0, -50%);
-  top: 72%;
+  top: 50%;
   left: 0%;
   pointer-events: none;
   width: 25px;
@@ -34,7 +44,8 @@
 
 
 .input-icon-right > i {
-  left: 10%;
+  left: 40%;
+  top: 48%
 }
 
 .input-icon-right > input {
@@ -49,6 +60,10 @@
 }
 
 .amount-details {
-  margin: 0;
+  margin: 0 8px;
   padding: 0;
+}
+
+label {
+  margin: 0 8px;
 }
