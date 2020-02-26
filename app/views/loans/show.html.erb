@@ -1,9 +1,14 @@
-<h1>Loan # <%= @loan.id %></h1>
-<div class="card">
-<h3>￥<%= @loan.amount %></h3>
-<p>Interest Rate: <%= @loan.interest_rate %>%</p>
-<p>Duration: <%= @loan.duration %> Days</p>
-<p>Potential return: ￥<%=
-    (@loan.amount + ( @loan.amount * @loan.interest_rate / 100 )).round
-    %></p>
+<div class="container">
+  <div class="loan-container w-50">
+    <h1>Loan # <%= @loan.id %></h1>
+    <div class="card p-5">
+      <h3>￥<%= @loan.amount %></h3>
+      <p>Interest Rate: <%= @loan.interest_rate %>%</p>
+      <p>Duration: <%= @loan.duration %> Days</p>
+      <p>Potential return: ￥<%=
+          (@loan.amount + ( @loan.amount * @loan.interest_rate / 100 )).round
+          %></p>
+      <%= link_to "Back", contracts_index_path, class: "btn btn-main w-25"  %>
+    </div>
+  </div>
 </div>
