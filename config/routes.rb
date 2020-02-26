@@ -11,5 +11,6 @@ Rails.application.routes.draw do
     patch 'repaid_loan', to: "contracts#repaid_loan"
     patch 'approve', to: "contracts#approve"
     patch 'repaid_lender', to: "contracts#repaid_lender"
+    patch 'rejected', to: "contracts#rejected"
   end
 end
