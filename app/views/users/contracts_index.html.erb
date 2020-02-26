@@ -1,9 +1,24 @@
 <%= render "sidebar" %>
-
-<h1>contacts index</h1>
+<h1>contracts index</h1>
+<h2>Pending approval</h2>
+<% @pending.each do |pending_loan| %>
+  <div class='card'>
+    <h3>ID: <%= pending_loan.id %></h3>
+    <p>description: <%= pending_loan.description %></p>
+    <p>created at:<%= pending_loan.created_at %></p>
+    <p>due date:<%= pending_loan.due_date %></p>
+    <p>interest rate:<%= pending_loan.loan.interest_rate %></p>
+    <p>amount: <%= pending_loan.loan.amount %></p>
+  </div>
+<% end %>
+<h2>All contracts</h2>
 <% @contracts.each do |contract| %>
-  <p><%= contract.description %></p>
-  <p><%= contract.due_date %></p>
-  <p><%= contract.loan.interest_rate %></p>
-  <p><%= contract.loan.amount %></p>
+  <div class='card'>
+    <h3>ID: <%= contract.id %></h3>
+    <p>description: <%= contract.description %></p>
+    <p>created at:<%= contract.created_at %></p>
+    <p>due date:<%= contract.due_date %></p>
+    <p>interest rate:<%= contract.loan.interest_rate %></p>
+    <p>amount: <%= contract.loan.amount %></p>
+  </div>
 <% end %>

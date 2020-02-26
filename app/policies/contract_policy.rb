@@ -34,7 +34,7 @@ class ContractPolicy < ApplicationPolicy
   end
 
   def contracts_index?
-    true
+    user.lender
   end
 end
 
