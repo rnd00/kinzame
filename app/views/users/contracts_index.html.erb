@@ -1,7 +1,9 @@
 <h1>contacts index</h1>
 <% @contracts.each do |contract| %>
-  <p><%= contract.description %></p>
-  <p><%= contract.due_date %></p>
-  <p><%= contract.loan.interest_rate %></p>
-  <p><%= contract.loan.amount %></p>
+  <h3>ID: <%= contract.id %></h3>
+  <p>description: <%= contract.description %></p>
+  <p>created at:<%= contract.created_at %></p>
+  <p>due date:<%= contract.due_date %></p>
+  <p>interest rate:<%= contract.loan.interest_rate %></p>
+  <p>amount: <%= contract.loan.amount %></p>
 <% end %>
