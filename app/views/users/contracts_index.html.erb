@@ -1,11 +1,11 @@
 <%= render "sidebar" %>
 <div class="contract-wrapper">
   <h2>Pending approval</h2>
-  <div class="card loan">
+  <div class="loan">
     <%= render "users/loan-header-pending" %>
   </div>
   <% @pending.each do |pending_loan| %>
-    <div class='card loan loan-pending'>
+    <div class='loan loan-pending'>
       <%= render "users/loan-card", contract: pending_loan %>
        <div>
         <%= link_to contract_approve_path(pending_loan), method: "patch" , class: "btn btn-approve btn-circle" do  %>
@@ -18,11 +18,11 @@
     </div>
   <% end %>
   <h2>All contracts</h2>
-  <div class="card loan">
+  <div class="loan">
     <%= render "users/loan-header" %>
   </div>
   <% @contracts.each do |contract| %>
-    <div class='card loan'>
+    <div class='loan'>
       <%= render "users/loan-card", contract: contract %>
     </div>
   <% end %>
