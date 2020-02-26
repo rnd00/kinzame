@@ -2,12 +2,14 @@
 .sidenav {
   width: 160px; /* Set the width of the sidebar */
   position: fixed; /* Fixed Sidebar (stay in place on scroll) */
-  z-index: -1; /* Stay on top */
+  z-index: 1; /* Stay on top */
   top: 0; /* Stay at the top */
   left: 0;
   background-color: $light-blue; /* Black */
   overflow-x: hidden; /* Disable horizontal scroll */
-  padding-top: 20px;
+  margin-top: 91px;
+  border-radius: $border-radius * 2;
+  box-shadow: 1px 1px 8px 1px rgba(0,0,0,0.35);
 }
 
 /* The navigation menu links */
@@ -19,6 +21,9 @@
   display: block;
 }
 
+.sidebar-active{
+  background-color: #93b1c9;
+}
 /* When you mouse over the navigation links, change their color */
 .sidenav a:hover {
   color: #f1f1f1;
@@ -34,4 +39,12 @@
 @media screen and (max-height: 450px) {
   .sidenav {padding-top: 15px;}
   .sidenav a {font-size: 18px;}
+}
+
+.sidebar-title{
+  background-color: $blue;
+  border-bottom: 1px solid $grey;
+  color: $white;
+  padding: $spacer;
+  margin-bottom: 0;
 }
