@@ -52,6 +52,8 @@ puts 'making 50 borrowers'
 end
 puts '...done'
 
+
+borrowers = User.where(lender: false)
 puts "creating contracts and assigning them to loans and borrowers"
 loans = Loan.all
 loans.each do |loan|
@@ -61,7 +63,7 @@ loans.each do |loan|
       due_date: Date.today + (1..30).to_a.sample,
       loan: loan,
       approved: [true, true, true, false].sample,
-      user: User.find(((User.first.id+3)..User.where(lender: false).count).to_a.sample)
+      user: borrowers.take
       )
   end
 end
