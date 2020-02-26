@@ -25,6 +25,12 @@ gem "faker"
 # Authorization
 gem 'pundit'
 
+# Cloudinary - Image hosting
+gem 'cloudinary', '~> 1.12.0'
+
+# Protecting data in env file
+gem 'dotenv-rails', groups: [:development, :test]
+
 group :development do
   gem 'web-console', '>= 3.3.0'
 end
