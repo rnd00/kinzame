@@ -10,3 +10,9 @@ $orange: #E67E22;
 $green: #1EDD88;
 $red: red;
 $white: #F8F8FF;
+$black: #000000;
+
+// darken
+
+$darken-yellow: darken($yellow, 30%);
+$darken-light-blue: darken($light-blue, 30%);
