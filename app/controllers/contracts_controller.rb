@@ -66,6 +66,7 @@ class ContractsController < ApplicationController
   end
 
   def rejected
+    @contract = Contract.find(params[:contract_id])
     authorize @contract
     @contract.rejected!
     @contract.save
