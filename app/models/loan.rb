@@ -1,5 +1,6 @@
 class Loan < ApplicationRecord
   belongs_to :user
+  has_many :contracts
 
   validates :amount, :interest_rate, :duration, presence: true
   validates :duration, numericality: { only_integer: true }
