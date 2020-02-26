@@ -5,7 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :contracts
-  has_many :loans, through: :contracts
+  has_many :loans
+  has_many :loan_contracts, through: :loans, source: :contracts
 
   validates :first_name, :last_name, presence: true
   validates :wallet, numericality: { only_integer: true }
@@ -13,5 +14,4 @@ class User < ApplicationRecord
   def no_loan?
     self.contracts.where(repaid_loan: true).empty?
   end
-
 end
