@@ -16,9 +16,10 @@ footer {
   justify-content: space-between;
   height: 50px;
   padding: 0px 50px;
-  color: $grey;
+  color: $white;
   font-size: 12px;
   border-top: 1px solid $light-grey;
+  z-index: 1;
 }
 .footer-links {
   display: flex;
