@@ -5,15 +5,18 @@ class Contract < ApplicationRecord
   validates :description, :user_id, :loan_id, presence: true
 
   def repaid_loan!
-    self.repaid_loan = true if self.repaid_loan == false
+    self.repaid_loan = true
   end
 
   def approve!
-    self.approved = true if self.approved == false
+    self.approved = true
   end
 
   def repaid_lender!
-    self.repaid_lender = true if self.repaid_lender == false
+    self.repaid_lender =
   end
 
+  def rejected!
+    self.rejected = true
+  end
 end
