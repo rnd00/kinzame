@@ -2,12 +2,18 @@
   margin-left: 180px;
 }
 .loan {
-  display: grid;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
   width: 90%;
   margin: $spacer * 2 0;
   border-radius: $border-radius * 2;
   padding: $spacer * 3;
   background-color: $light-blue;
+  & p{
+    margin: 0;
+  }
 }
 
 .loan-pending {

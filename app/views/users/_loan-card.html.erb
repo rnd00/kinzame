@@ -1,4 +1,17 @@
-<h3>ID: <%= contract.id %></h3>
-<p>due date:<%= contract.due_date %></p>
-<p>interest rate:<%= contract.loan.interest_rate %></p>
-<p>amount: <%= contract.loan.amount %></p>
+<div>
+  <h3>ID: <%= contract.id %></h3>
+</div>
+<div>
+  <p class="contract-amount"> ￥<%= contract.loan.amount %></p>
+</div>
+<div>
+  <p class="contract-interest"><%= contract.loan.interest_rate %>%</p>
+</div>
+<div>
+  <p class="contract-total">￥<%=
+    (contract.loan.amount + ( contract.loan.amount * contract.loan.interest_rate / 100 )).round
+    %></p>
+</div>
+<div>
+  <p class="contract-due"><%= contract.due_date %></p>
+</div>
