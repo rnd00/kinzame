@@ -34,7 +34,11 @@ class ContractPolicy < ApplicationPolicy
   end
 
   def dashboard?
-    true
+    user.lender
+  end
+
+  def rejected?
+    user.lender
   end
 end
 

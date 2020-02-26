@@ -54,7 +54,7 @@ class ContractsController < ApplicationController
     authorize @contract
     @contract.approve!
     @contract.save
-    redirect_to contracts_index_path
+    redirect_to dashboard_path
     flash[:notice] = "Loan Approved"
   end
 
@@ -63,6 +63,14 @@ class ContractsController < ApplicationController
     @contract.repaid_lender!
     @contract.save
     redirect_to loan_contracts_path
+  end
+
+  def rejected
+    @contract = Contract.find(params[:contract_id])
+    authorize @contract
+    @contract.rejected!
+    @contract.save
+    redirect_to dashboard_path
   end
 
   private
