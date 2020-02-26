@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_25_071059) do
+ActiveRecord::Schema.define(version: 2020_02_26_104104) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 2020_02_25_071059) do
     t.datetime "updated_at", null: false
     t.bigint "user_id"
     t.bigint "loan_id"
+    t.boolean "rejected", default: false
     t.index ["loan_id"], name: "index_contracts_on_loan_id"
     t.index ["user_id"], name: "index_contracts_on_user_id"
   end
