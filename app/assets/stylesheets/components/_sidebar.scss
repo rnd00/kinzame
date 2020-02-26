@@ -2,7 +2,7 @@
 .sidenav {
   width: 160px; /* Set the width of the sidebar */
   position: fixed; /* Fixed Sidebar (stay in place on scroll) */
-  z-index: -1; /* Stay on top */
+  z-index: 0; /* Stay on top */
   top: 0; /* Stay at the top */
   left: 0;
   height: 100vh;
@@ -20,6 +20,7 @@
   font-size: 25px;
   color: #818181;
   display: block;
+  margin: $spacer * 2 auto;
 }
 
 .sidebar-active{
