@@ -32,7 +32,7 @@ puts "seeding lenders with loan types"
 lenders = User.where(lender: true)
 lenders.each do |lender|
   10.times do
-    loan = Loan.create!( amount: rand(10..300),
+    loan = Loan.create!( amount: rand(1..10) * 10000,
                     user: lender,
                     duration: rand(10..60),
                     interest_rate: (rand(1..10) + [0, 0.5].sample)
