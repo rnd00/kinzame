@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  def contracts_index
+  def dashboard
     @contracts = (current_user.lender ? current_user.loan_contracts : current_user.contracts).order(:due_date)
     @loans = current_user.loans
     @pending = @contracts.where(approved: false)
