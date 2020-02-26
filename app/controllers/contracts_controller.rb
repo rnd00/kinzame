@@ -55,6 +55,7 @@ class ContractsController < ApplicationController
     @contract.approve!
     @contract.save
     redirect_to contracts_index_path
+    flash[:notice] = "Loan Approved"
   end
 
   def repaid_lender

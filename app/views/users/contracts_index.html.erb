@@ -1,14 +1,26 @@
 <%= render "sidebar" %>
 <div class="contract-wrapper">
-  <h1>contracts index</h1>
   <h2>Pending approval</h2>
+  <div class="card loan">
+    <%= render "users/loan-header-pending" %>
+  </div>
   <% @pending.each do |pending_loan| %>
     <div class='card loan loan-pending'>
       <%= render "users/loan-card", contract: pending_loan %>
-      <%= link_to "Approve", contract_approve_path(pending_loan), method: "patch" , class: "btn btn-approve"   %>
+       <div>
+        <%= link_to contract_approve_path(pending_loan), method: "patch" , class: "btn btn-approve btn-circle" do  %>
+          <i class="fas fa-check-circle"></i>
+        <% end %>
+        <%= link_to "#", method: "patch" , class: "btn btn-reject btn-circle"  do %>
+          <i class="fas fa-times-circle"></i>
+        <% end %>
+      </div>
     </div>
   <% end %>
   <h2>All contracts</h2>
+  <div class="card loan">
+    <%= render "users/loan-header" %>
+  </div>
   <% @contracts.each do |contract| %>
     <div class='card loan'>
       <%= render "users/loan-card", contract: contract %>
