@@ -35,7 +35,9 @@
   border-radius: $border-radius;
   margin-right: $spacer * 2;
   transition: 0.5s;
+  color: gray !important;
   &:hover {
+    color: gray !important;
     box-shadow: 2px 2px 2px 1px rgba(0,0,0,0.3);
   }
   font-size: 16px !important;

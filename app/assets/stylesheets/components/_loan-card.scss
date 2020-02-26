@@ -19,3 +19,36 @@
 .loan-pending {
   background-color: $yellow;
 }
+
+.loan-header {
+  // setting up header
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.loan-header-pending {
+  background-color: $darken-yellow;
+}
+
+.loan-header-all {
+  background-color: $darken-light-blue;
+}
+
+.approval-buttons {
+  display: flex;
+  justify-content: space-between;
+  width: 480px;
+  & p {
+    margin: 0 auto;
+  }
+  // for checking
+  // border: 1px solid black;
+}
+
+.contract-id, .contract-amount, .contract-total, .contract-interest, .contract-due {
+  width: 100%;
+  text-align: center;
+
+  // for checking
+  // border: 1px solid black;
+}
