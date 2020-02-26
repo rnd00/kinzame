@@ -1,4 +1,15 @@
+footer {
+  // margin-top: 6.25rem;
+  // margin-top: -50px;
+
+}
+
+.bg-light-blue {
+  background: $light-blue;
+}
+
 .footer {
+  flex-shrink: 0;
   background: $light-blue;
   display: flex;
   align-items: center;

@@ -17,7 +17,7 @@ User.create!(first_name: "Rich", last_name: "Guy", email: "borrower@kinzame.com"
 
 puts "...finished"
 
-puts "generating 10 lenders, multiple loans per lender"
+puts "generating 10 lenders"
 10.times do
   user_seed = User.create!( email: Faker::Internet.email,
                 password: "123123",
@@ -25,13 +25,21 @@ puts "generating 10 lenders, multiple loans per lender"
                 last_name: Faker::Name.last_name,
                 lender: true
                 )
-      loan = Loan.create!( amount: rand(10..300),
-                    user: user_seed,
+end
+puts '...finished'
+
+puts "seeding lenders with loan types"
+lenders = User.where(lender: true)
+lenders.each do |lender|
+  10.times do
+    loan = Loan.create!( amount: rand(1..10) * 10000,
+                    user: lender,
                     duration: rand(10..60),
                     interest_rate: (rand(1..10) + [0, 0.5].sample)
                     )
+  end
 end
-puts '...finished'
+puts "...finished"
 
 puts 'making 50 borrowers'
 50.times do
@@ -47,37 +55,30 @@ puts '...done'
 puts "creating contracts and assigning them to loans and borrowers"
 loans = Loan.all
 loans.each do |loan|
-  (1..5).to_a.sample.times do
+  rand(1..5).times do
     contract = Contract.create!(
       description: Faker::Lorem.words(number: 4),
       due_date: Date.today + (1..30).to_a.sample,
       loan: loan,
-      approved: [true, false].sample,
+      approved: [true, true, true, false].sample,
       user: User.find(((User.first.id+3)..User.where(lender: false).count).to_a.sample)
       )
   end
 end
 puts "...done"
 
-puts "contract count"
-p Contract.count
-
 puts 'randomizing repaid_loan'
 approved_contracts = Contract.where(approved: true)
 approved_contracts.each do |contract|
   contract.repaid_loan = [true, true, false].sample
+  contract.save
 end
 puts '...finished'
 
 puts 'setting some contracts to repaid_loan = true'
 repaid_contracts = Contract.where(repaid_loan: true)
 repaid_contracts.each do |contract|
-  contract.repaid_lender = [true, true, true, false].sample
-end
-puts '...finished'
-
-puts 'saving the contracts'
-Contract.all.each do |contract|
+  contract.repaid_lender = [true, false].sample
   contract.save
 end
 puts '...finished'
