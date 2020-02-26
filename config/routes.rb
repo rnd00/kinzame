@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: "pages#home"
-  get 'dashboard', to: 'users#contracts_index', as: 'contracts_index'
+  get 'dashboard', to: 'users#dashboard', as: 'dashboard'
 
   resources :loans do
     resources :contracts, only: [:index, :new, :create]
@@ -11,5 +11,6 @@ Rails.application.routes.draw do
     patch 'repaid_loan', to: "contracts#repaid_loan"
     patch 'approve', to: "contracts#approve"
     patch 'repaid_lender', to: "contracts#repaid_lender"
+    patch 'rejected', to: "contracts#rejected"
   end
 end

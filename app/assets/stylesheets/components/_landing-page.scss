@@ -4,20 +4,32 @@
 
 .landing-user-stories-container {
   display: flex;
-  justify-content: space-between;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: stretch;
   padding: $spacer * 2;
 }
 
 .landing-user-story {
   display: flex;
+  align-self: stretch;
   background-color: $white;
   margin: auto $spacer * 3;
   border: 1px solid $light-grey;
   border-radius: 8px;
+  width: 600px;
+  max-height: 40%;
 }
 
 .landing-user-story-info {
   padding: $spacer * 2;
+  margin: auto 0;
+  & h2 {
+    font-size: 2vw;
+  }
+  & p {
+    margin: 0;
+  }
 }
 
 .landing-user-story-image img{
@@ -26,6 +38,7 @@
 }
 
 .stars {
+  position: bottom;
   color: $yellow;
 }
 
