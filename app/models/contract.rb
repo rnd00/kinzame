@@ -13,7 +13,7 @@ class Contract < ApplicationRecord
   end
 
   def repaid_lender!
-    self.repaid_lender =
+    self.repaid_lender = true
   end
 
   def rejected!
