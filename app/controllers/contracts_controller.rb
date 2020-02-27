@@ -4,10 +4,6 @@ class ContractsController < ApplicationController
   skip_before_action :authenticate_user!, only: %i(index)
   #to do: add actions for sorting
 
-  def index
-    @contracts = Contract.all
-  end
-
   def show
     authorize @contract
   end
