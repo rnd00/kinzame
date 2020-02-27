@@ -7,6 +7,16 @@ class LoansController < ApplicationController
     #but only for the user when pundit will be install
   end
 
+  def results
+    if params[:query].present?
+      @loans = Loan.where(amount: params[:query])
+      authorize @loans
+    else
+      @loans = Loan.all
+      authorize @loans
+    end
+  end
+
   def show
     authorize @loan
   end
