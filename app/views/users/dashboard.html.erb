@@ -9,7 +9,7 @@
     <%= render "users/loan-header-pending" %>
   </div>
   <% @pending.each do |pending_loan| %>
-    <div class='card loan loan-pending '>
+    <button type="button" class='card loan loan-pending' data-toggle="collapse" data-target="#a-<%= pending_loan.id %>" aria-expanded="false" aria-controls="7">
       <%= render "users/loan-card", contract: pending_loan %>
        <div class='approval-buttons'>
         <%= link_to contract_approve_path(pending_loan), method: "patch" , class: "btn btn-approve btn-circle m-0" do  %>
@@ -19,7 +19,10 @@
           <i class="fas fa-times-circle"></i>
         <% end %>
       </div>
-    </div>
+    </button>
+      <div class="collapse" id="a-<%= pending_loan.id %>">
+        <div>Test</div>
+      </div>
   <% end %>
   <!-- / pending loan table -->
 
