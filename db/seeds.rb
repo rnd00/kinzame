@@ -5,12 +5,13 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-
+puts "destroying old records"
 Contract.destroy_all
 Loan.destroy_all
 User.destroy_all
+puts "...finished"
 
-puts "Generating defauld admin@kinzame.com, lender@kinzame.com, and borrower@kinzame.com"
+puts "Generating default admin@kinzame.com, lender@kinzame.com, and borrower@kinzame.com"
 User.create!(first_name: "Shinzo", last_name: "Abe", email: "admin@kinzame.com", password: "010203", wallet: "123456", admin: true)
 User.create!(first_name: "Adil", last_name: "Omary", email: "lender@kinzame.com", password: "123456", wallet: "10000", lender: true)
 User.create!(first_name: "Rich", last_name: "Guy", email: "borrower@kinzame.com", password: "123123", wallet: "0", lender: false)
