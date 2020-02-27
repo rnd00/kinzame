@@ -1,14 +1,14 @@
 <% status = "" %>
 <% if contract.approved == false %>
   <% status = " wants to borrow" %>
-<% elsif contract.repaid_lender %>
+<% elsif contract.repaid_loan %>
   <% status = " borrowed" %>
 <% elsif contract.rejected %>
 <% status = " was rejected ->" %>
 <% else %>
   <% status = " is borrowing" %>
 <% end %>
-<% if contract.repaid_loan %>
+<% if contract.repaid_lender %>
   <div class="contract-amount">
     <p><%= contract.user.first_name %> <%= contract.user.last_name[0] %>. has sent payment for ￥<%= contract.loan.amount %> </p>
   </div>
