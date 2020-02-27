@@ -38,12 +38,18 @@
   background-color: $darken-light-blue;
 }
 
+.loan-dropdown {
+  margin: 0 auto;
+}
+
 .approval-buttons {
   display: flex;
-  justify-content: space-between;
   // width: 480px;
   & p {
     margin: 0 auto;
+  }
+  & .btn{
+    margin-left: $spacer * 4 !important;
   }
   // for checking
   // border: 1px solid black;

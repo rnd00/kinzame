@@ -19,11 +19,13 @@ class ContractsController < ApplicationController
     @contract.loan = @loan
     @contract.user = current_user
     if @contract.save
-      redirect_to loan_contract_path(id: @contract.id)
+      redirect_to contract_path(id: @contract.id)
     else
       render :new
     end
   end
+
+
 
   def edit
     authorize @contract
@@ -32,7 +34,7 @@ class ContractsController < ApplicationController
   def update
     authorize @contract
     if @contract.update(contract_params)
-      redirect_to loan_contract_path(id: @contract.id)
+      redirect_to contract_path(id: @contract.id)
     else
       render :edit
     end
@@ -50,8 +52,14 @@ class ContractsController < ApplicationController
     authorize @contract
     @contract.approve!
     @contract.save
+    subtract_approved(@contract)
     redirect_to dashboard_path
     flash[:notice] = "Loan Approved"
+  end
+
+  def subtract_approved(contract)
+    new_wallet_amount = current_user.wallet - contract.loan.amount
+    current_user.update(wallet: new_wallet_amount)
   end
 
   def repaid_lender
@@ -81,6 +89,6 @@ class ContractsController < ApplicationController
   end
 
   def contract_params
-    params.require(:contract).permit(:description, :user_id, :loan_id)
+    params.require(:contract).permit(:description, :user_id, :loan_id, :photo)
   end
 end

@@ -2,6 +2,7 @@ class Contract < ApplicationRecord
   belongs_to :loan
   belongs_to :user
   has_one :lender, through: :loan, source: :user
+  has_many_attached :photo
 
   validates :description, :user_id, :loan_id, presence: true
   validate :borrower_and_lender_not_same
