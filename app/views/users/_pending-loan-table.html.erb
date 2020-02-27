@@ -8,15 +8,7 @@
     <!-- collapsing function   -->
     <div class="collapse" id="a-<%= pending_loan.id %>">
       <div class="contract-content">
-        <p>Loan description: <%= pending_loan.description%></p>
-        <div class='approval-buttons'>
-          <%= link_to contract_approve_path(pending_loan), method: "patch" , class: "btn btn-approve btn-circle m-0 p-0" do  %>
-            <i class="fas fa-check-circle"></i>
-          <% end %>
-          <%= link_to contract_rejected_path(pending_loan), method: "patch" , class: "btn btn-reject btn-circle m-0 p-0"  do %>
-            <i class="fas fa-times-circle"></i>
-          <% end %>
-        </div>
+        <%= render "users/loan-dropdown", pending_loan: pending_loan %>
       </div>
     </div>
     <!-- / collapsing function     -->
