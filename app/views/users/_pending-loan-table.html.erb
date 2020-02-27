@@ -1,0 +1,17 @@
+<% unless @pending.empty? %>
+  <div class="my-5">
+    <h2>Pending approval</h2>
+  </div>
+  <% @pending.each do |pending_loan| %>
+    <button type="button" class='card loan loan-pending' data-toggle="collapse" data-target="#a-<%= pending_loan.id %>" aria-expanded="false" aria-controls="<%= pending_loan.id %>">
+      <%= render "users/loan-card", contract: pending_loan %>
+    </button>
+    <!-- collapsing function   -->
+    <div class="collapse" id="a-<%= pending_loan.id %>">
+      <div class="contract-content">
+        <%= render "users/loan-dropdown", pending_loan: pending_loan %>
+      </div>
+    </div>
+    <!-- / collapsing function     -->
+  <% end %>
+<% end %>

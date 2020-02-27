@@ -1,0 +1,26 @@
+// overwriting / adding some rules to the bootstrap's as well
+
+.card-columns {
+  @include media-breakpoint-only(sm) {
+    column-count: 1;
+  }
+  @include media-breakpoint-only(md) {
+    column-count: 2;
+  }
+  @include media-breakpoint-only(lg) {
+    column-count: 4;
+  }
+  @include media-breakpoint-only(xl) {
+    column-count: 4;
+  }
+}
+
+#card-search-loan {
+  & p {
+    margin-bottom: 0;
+  }
+}
+
+#search-result-title {
+  margin: 24px auto;
+}

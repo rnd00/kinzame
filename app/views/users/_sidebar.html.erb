@@ -1,7 +1,8 @@
-
 <div class="sidenav">
-  <p class= "wallet"><i class="fas fa-wallet"></i> ￥ <%= current_user.wallet %> </p>
-  <%= link_to "Offer a Loan", new_loan_path, class: "btn btn-new-loan"  %>
+  <% if current_user.lender && @current_user.wallet >= 10000 %>
+    <p class= "wallet"><i class="fas fa-wallet"></i> <span id='wallet'>￥ <%= current_user.money_available %></span></p>
+    <%= link_to "Offer a Loan", new_loan_path, class: "btn btn-new-loan"  %>
+  <% end %>
   <h3 class="sidebar-title">Your Loans</h3>
   <a href="#" class="sidebar-active">All</a>
   <a href="#">Pending</a>

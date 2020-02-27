@@ -1,0 +1,23 @@
+.form-login, .form-signup {
+  width: 340px;
+  margin: 0 auto;
+  border: 1px solid $grey;
+  border-radius: 4px;
+  padding: 8px;
+
+  & .form-check {
+    margin-left: 8px;
+  }
+
+  & small {
+    margin-left: 8px;
+  }
+}
+
+.links-devise {
+  width: 340px;
+  margin: 0 auto;
+  padding: 8px;
+  border: 1px solid $grey;
+  border-radius: 4px;
+}

@@ -1,12 +1,8 @@
 class ContractsController < ApplicationController
-  before_action :set_contract, only: [:show, :edit, :update, :repaid_loan, :repaid_lender]
+  before_action :set_contract, only: [:show, :edit, :update, :repaid_lender]
   before_action :set_loan, only: [:new, :create, :edit, :update]
   skip_before_action :authenticate_user!, only: %i(index)
   #to do: add actions for sorting
-
-  def index
-    @contracts = Contract.all
-  end
 
   def show
     authorize @contract
@@ -23,11 +19,13 @@ class ContractsController < ApplicationController
     @contract.loan = @loan
     @contract.user = current_user
     if @contract.save
-      redirect_to loan_contract_path(id: @contract.id)
+      redirect_to contract_path(id: @contract.id)
     else
       render :new
     end
   end
+
+
 
   def edit
     authorize @contract
@@ -36,17 +34,18 @@ class ContractsController < ApplicationController
   def update
     authorize @contract
     if @contract.update(contract_params)
-      redirect_to loan_contract_path(id: @contract.id)
+      redirect_to contract_path(id: @contract.id)
     else
       render :edit
     end
   end
 
   def repaid_loan
+    @contract = Contract.find(params[:contract_id])
     authorize @contract
     @contract.repaid_loan!
     @contract.save
-    redirect_to loan_contracts_path
+    redirect_to dashboard_path
   end
 
   def approve
@@ -54,8 +53,14 @@ class ContractsController < ApplicationController
     authorize @contract
     @contract.approve!
     @contract.save
-    redirect_to contracts_index_path
+    subtract_approved(@contract)
+    redirect_to dashboard_path
     flash[:notice] = "Loan Approved"
+  end
+
+  def subtract_approved(contract)
+    new_wallet_amount = current_user.wallet - contract.loan.amount
+    current_user.update(wallet: new_wallet_amount)
   end
 
   def repaid_lender
@@ -63,6 +68,15 @@ class ContractsController < ApplicationController
     @contract.repaid_lender!
     @contract.save
     redirect_to loan_contracts_path
+  end
+
+  def rejected
+    @contract = Contract.find(params[:contract_id])
+    authorize @contract
+    @contract.rejected!
+    @contract.save
+    redirect_to dashboard_path
+    flash[:notice] = "Loan Rejected"
   end
 
   private
@@ -76,6 +90,6 @@ class ContractsController < ApplicationController
   end
 
   def contract_params
-    params.require(:contract).permit(:description, :user_id, :loan_id)
+    params.require(:contract).permit(:description, :user_id, :loan_id, :photo)
   end
 end

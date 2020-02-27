@@ -18,7 +18,7 @@ class ContractPolicy < ApplicationPolicy
   end
 
   def create?
-    user.lender && user.no_loan? || user.admin
+    user.no_loan? || user.admin
   end
 
   def approve?
@@ -33,7 +33,11 @@ class ContractPolicy < ApplicationPolicy
     user.lender && record.loan.user == user || user.admin
   end
 
-  def contracts_index?
+  def dashboard?
+    true
+  end
+
+  def rejected?
     user.lender
   end
 end
