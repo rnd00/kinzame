@@ -5,6 +5,9 @@ class UsersController < ApplicationController
     @pending = @contracts.where(approved: false, rejected: false)
     @completed = @contracts.where(repaid_loan: true)
     @paid = @contracts.where(repaid_lender: true)
+    #Add by Adil
+    @borrower_active = @contracts.where(approved: true)
+    @borrower_history = @contracts.where(repaid_lender:true)
     authorize @contracts
   end
 
