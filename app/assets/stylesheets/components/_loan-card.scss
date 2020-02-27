@@ -37,7 +37,7 @@
 .approval-buttons {
   display: flex;
   justify-content: space-between;
-  width: 480px;
+  // width: 480px;
   & p {
     margin: 0 auto;
   }
@@ -52,3 +52,10 @@
   // for checking
   // border: 1px solid black;
 }
+
+.contract-content {
+  width: 90%;
+  display:flex;
+  justify-content: space-between;
+}
+
