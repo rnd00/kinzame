@@ -18,7 +18,7 @@ class ContractPolicy < ApplicationPolicy
   end
 
   def create?
-    user.lender && user.no_loan? || user.admin
+    user.no_loan? || user.admin
   end
 
   def approve?
