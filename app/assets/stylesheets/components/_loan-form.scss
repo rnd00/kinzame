@@ -25,12 +25,16 @@
   position: relative;
 }
 
+#user_wallet {
+  padding-left: 16px;
+}
+
 .input-icon > i {
   position: absolute;
   display: block;
   transform: translate(0, -50%);
   top: 50%;
-  left: 0%;
+  left: -3%;
   pointer-events: none;
   width: 25px;
   text-align: center;
