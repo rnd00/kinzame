@@ -43,6 +43,14 @@
   .sidenav a {font-size: 18px;}
 }
 
+@media screen and (max-width: 550px) {
+  .sidenav {
+    padding-top: 15px;
+    width: 100px;
+  }
+  .sidenav a {font-size: 12px;}
+}
+
 .sidebar-title{
   background-color: $blue;
   border-bottom: 1px solid $grey;
