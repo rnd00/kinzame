@@ -15,14 +15,14 @@
   border-radius: $border-radius * 2;
   padding: $spacer * 3;
   background-color: $white;
-  border-left: 4px solid $light-blue;
+  border-left: 8px solid $light-blue;
   & p{
     margin: 0;
   }
 }
 
 .loan-pending {
-  border-left: 4px solid $yellow;
+  border-left: 8px solid $yellow;
 }
 
 .loan-active {
@@ -72,5 +72,13 @@
   width: 90%;
   display:flex;
   justify-content: space-between;
+}
+
+.contract-amount {
+  display: flex;
+  justify-content: space-between;
+  & i {
+    margin: auto 0;
+  }
 }
 
