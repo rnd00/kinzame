@@ -1,19 +1,14 @@
-<div class="contract-id">
-  <p><%= contract.loan.id %></p>
-</div>
+<% status = "" %>
+<% if contract.approved == false %>
+  <% status = " wants to borrow" %>
+<% elsif contract.repaid_loan %>
+  <% status = " borrowed" %>
+<% elsif contract.rejected %>
+<% status = " was rejected ->" %>
+<% else %>
+  <% status = " is borrowing" %>
+<% end %>
 <div class="contract-amount">
-  <p> ￥<%= contract.loan.amount %></p>
+  <p><%= contract.user.first_name %> <%= contract.user.last_name[0] %>.<%= status %> ￥<%= contract.loan.amount %> over <%= contract.loan.duration %> days.</p>
 </div>
-<div class="contract-interest">
-  <p><%= contract.loan.interest_rate %>%</p>
-</div>
-<div class="contract-total">
-  <p>￥<%=
-    (contract.loan.amount + ( contract.loan.amount * contract.loan.interest_rate / 100 )).round
-    %></p>
-</div>
-<div class="contract-due">
-  <p><%= contract.due_date %></p>
-</div>
-
 
