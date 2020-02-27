@@ -4,7 +4,7 @@ class UsersController < ApplicationController
     @loans = current_user.loans
     @pending = @contracts.where(approved: false, rejected: false)
     @completed = @contracts.where(repaid_loan: true)
-    @paid = @contracts.where(repaid_lender: true)
+    @paid = @contracts.where(repaid_lender: true, repaid_loan: false)
     #Add by Adil
     @borrower_active = @contracts.where(approved: true)
     @borrower_history = @contracts.where(repaid_lender:true)
