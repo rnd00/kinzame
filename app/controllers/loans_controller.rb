@@ -1,6 +1,6 @@
 class LoansController < ApplicationController
   before_action :set_loan, only: %i(show edit update destroy)
-  skip_before_action :authenticate_user!, only: %i(index show)
+  skip_before_action :authenticate_user!, only: %i(index show results)
 
   def index
     @loans = policy_scope(Loan)
