@@ -6,6 +6,5 @@ class UsersController < ApplicationController
     @completed = @contracts.where(repaid_loan: true)
     @paid = @contracts.where(repaid_lender: true)
     authorize @contracts
-
   end
 end
