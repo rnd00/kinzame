@@ -29,6 +29,8 @@ class ContractsController < ApplicationController
     end
   end
 
+
+
   def edit
     authorize @contract
   end
@@ -54,9 +56,14 @@ class ContractsController < ApplicationController
     authorize @contract
     @contract.approve!
     @contract.save
-    # current_user.substract_approved(@contract.loan)
+    subtract_approved(@contract)
     redirect_to dashboard_path
     flash[:notice] = "Loan Approved"
+  end
+
+  def subtract_approved(contract)
+    new_wallet_amount = current_user.wallet - contract.loan.amount
+    current_user.update(wallet: new_wallet_amount)
   end
 
   def repaid_lender

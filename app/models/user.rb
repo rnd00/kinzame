@@ -16,13 +16,10 @@ class User < ApplicationRecord
   end
 
   def money_available
-    total_amount = loans.joins(:contracts).where('repaid_loan = false' &&).sum(&:amount)
+    total_amount = loans.joins(:contracts).where('repaid_loan = false').sum(&:amount)
     self.wallet - total_amount
   end
 
-  def actual_wallet
-    self.wallet
-  end
   # def substract_approved(loan)
   #   self.wallet - loan.amount
   #   self.save
