@@ -17,5 +17,6 @@ class User < ApplicationRecord
 
   def become_lender!
     self.lender = true
+    self.save
   end
 end

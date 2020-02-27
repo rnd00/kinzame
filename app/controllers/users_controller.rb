@@ -7,4 +7,8 @@ class UsersController < ApplicationController
     @paid = @contracts.where(repaid_lender: true)
     authorize @contracts
   end
+
+  def become_lender
+    current_user.become_lender!
+  end
 end
