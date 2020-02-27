@@ -7,8 +7,8 @@ class Loan < ApplicationRecord
   validates :amount, :interest_rate, numericality: true
 
   include PgSearch::Model
-  pg_search_scope :search_by_amount_and_duration,
-    against: [ :amount, :duration ],
+  pg_search_scope :search_by_amount,
+    against: [ :amount],
     using: {
       tsearch: { prefix: true } # <-- now `superman batm` will return something!
     }
