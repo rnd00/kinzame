@@ -26,8 +26,10 @@
       <p><%= pending_loan.loan.duration %> days</p>
     </div>
     <div class="sm-col-4 col-6">
-      <% unless pending_loan.approved %>
+      <% if !pending_loan.approved %>
         <%= render "users/loan-approval-buttons", pending_loan: pending_loan  %>
+      <% elsif pending_loan.repaid_lender %>
+        <%= render "users/loan-paid-buttons", pending_loan: pending_loan  %>
       <% end %>
     </div>
   </div>

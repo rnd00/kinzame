@@ -1,14 +1,18 @@
 <%= render "sidebar" %>
 <div class="contract-wrapper">
-<% if current_user.lender%>
+<% if current_user.lender %>
+    <!-- payment-confirm loan table -->
+  <%= render "payment-confirm-loan-table" %>
+    <!-- /payment-confirm loan table -->
     <!-- pending loan table -->
   <%= render "pending-loan-table" %>
     <!-- / pending loan table -->
+<% else %>
+  <!-- active contracts table -->
+  <%= render "active-loan" %>
+  <!-- / active contracts table -->
+<% end %>
     <!-- all contracts table -->
   <%= render "all-loan-table" %>
     <!-- / all contracts table -->
-<% else %>
-  <%= render "active-loan" %>
-  <%= render "all-loan-table" %>
-<% end %>
 </div>
