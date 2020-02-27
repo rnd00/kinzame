@@ -14,4 +14,8 @@ class User < ApplicationRecord
   def no_loan?
     self.contracts.where(repaid_loan: true).empty?
   end
+
+  def become_lender!
+    self.lender = true
+  end
 end
