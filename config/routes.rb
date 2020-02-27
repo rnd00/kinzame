@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get 'results', to: 'loans#results', as: 'results'
   get 'wallet', to: 'users#wallet', as: "wallet"
   patch 'charge_wallet', to: 'users#charge_wallet', as: 'recharge'
+  patch 'become_lender', to: 'users#become_lender'
 
   resources :loans do
     resources :contracts, only: [:index, :new, :create]

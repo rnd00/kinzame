@@ -12,4 +12,8 @@ class UserPolicy < ApplicationPolicy
   def wallet?
     true
   end
+
+  def become_lender?
+    user.no_loan?
+  end
 end
