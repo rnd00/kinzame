@@ -9,6 +9,7 @@ class LoansController < ApplicationController
 
   def results
     @loans = Loan.where.not(user: current_user)
+    @loans = @loans.joins(:user).where("wallet - amount >= 0")
     if params[:query].present?
       @loans = @loans.where(amount: params[:query])
       authorize @loans
