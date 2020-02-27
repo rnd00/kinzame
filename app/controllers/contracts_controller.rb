@@ -54,6 +54,7 @@ class ContractsController < ApplicationController
     authorize @contract
     @contract.approve!
     @contract.save
+    # current_user.substract_approved(@contract.loan)
     redirect_to dashboard_path
     flash[:notice] = "Loan Approved"
   end

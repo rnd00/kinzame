@@ -16,22 +16,12 @@ class User < ApplicationRecord
   end
 
   def money_available
-    # Select the user's wallet
-    # Setup a money_lend variable with inside => iteration of addition of every loan.amount
-    # select actual wallet's value and substract money_lend
-    # end
-    # money_lend = 0
-    # current_user.loans do |loan|
-    #   money_lend += loan.amount.where(repaid_lender: false)
-    # end
-    # current_user.wallet.to_i - money_lend.to_i
-     total_amount = loans.sum(&:amount)
-    wallet - total_amount
-    # OR
-    # current_user.wallet
-    # current_user.contracts.loans do |loan|
-    #   current_user.wallet -=loan.amount.where(repaid_lender = false)
+    total_amount = loans.joins(:contracts).where('repaid_loan = false' &&).sum(&:amount)
+    self.wallet - total_amount
   end
 
-
+  # def substract_approved(loan)
+  #   self.wallet - loan.amount
+  #   self.save
+  # end
 end
