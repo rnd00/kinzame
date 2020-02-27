@@ -20,6 +20,9 @@ class User < ApplicationRecord
     self.wallet - total_amount
   end
 
+  def actual_wallet
+    self.wallet
+  end
   # def substract_approved(loan)
   #   self.wallet - loan.amount
   #   self.save
