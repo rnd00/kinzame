@@ -1,51 +1,14 @@
 <%= render "sidebar" %>
 <div class="contract-wrapper">
-
-  <!-- pending loan table -->
-  <div class="my-5">
-    <h2>Pending approval</h2>
-  </div>
-  <div class="card loan loan-header loan-header-pending text-light">
-    <%= render "users/loan-header-pending" %>
-  </div>
-  <% @pending.each do |pending_loan| %>
-    <button type="button" class='card loan loan-pending' data-toggle="collapse" data-target="#a-<%= pending_loan.id %>" aria-expanded="false" aria-controls="<%= pending_loan.id %>">
-      <%= render "users/loan-card", contract: pending_loan %>
-    </button>
-    <!-- collapsing function   -->
-    <div class="collapse" id="a-<%= pending_loan.id %>">
-      <div class="contract-content">
-        <p>Loan description: <%= pending_loan.description%></p>
-        <div class='approval-buttons'>
-          <%= link_to contract_approve_path(pending_loan), method: "patch" , class: "btn btn-approve btn-circle m-0 p-0" do  %>
-            <i class="fas fa-check-circle"></i>
-          <% end %>
-          <%= link_to contract_rejected_path(pending_loan), method: "patch" , class: "btn btn-reject btn-circle m-0 p-0"  do %>
-            <i class="fas fa-times-circle"></i>
-          <% end %>
-        </div>
-      </div>
-    </div>
-    <!-- / collapsing function     -->
-  <% end %>
-  <!-- / pending loan table -->
-
-  <!-- all contracts table -->
-  <div class="my-5">
-    <h2>All contracts</h2>
-  </div>
-  <div class="card loan loan-header loan-header-all text-light">
-    <%= render "users/loan-header" %>
-  </div>
-  <% @contracts.each do |contract| %>
-    <button class='card loan' data-toggle="collapse" data-target="#a-<%= contract.id %>" aria-expanded="false" aria-controls="<%= contract.id %>">
-      <%= render "users/loan-card", contract: contract %>
-    </button>
-     <div class="collapse" id="a-<%= contract.id %>">
-        <div class="contract-content">
-          <p>Loan description: <%= contract.description%></p>
-        </div>
-      </div>
-  <% end %>
-  <!-- / all contracts table -->
+<% if current_user.lender%>
+    <!-- pending loan table -->
+  <%= render "pending-loan-table" %>
+    <!-- / pending loan table -->
+    <!-- all contracts table -->
+  <%= render "all-loan-table" %>
+    <!-- / all contracts table -->
+<% else %>
+  <%= render "active-loan" %>
+  <%= render "all-loan-table" %>
+<% end %>
 </div>
