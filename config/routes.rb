@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root to: "pages#home"
   get 'dashboard', to: 'users#dashboard', as: 'dashboard'
   get 'results', to: 'loans#results', as: 'results'
+  post 'charge_wallet', to: 'users#charge_wallet', as: 'recharge'
 
   resources :loans do
     resources :contracts, only: [:index, :new, :create]
