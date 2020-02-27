@@ -1,4 +1,6 @@
 <%= simple_form_for([@loan, @contract]) do |f| %>
   <%= f.input :description %>
+  <%= f.input :photo, as: :file %>
+  <p class="amount-details"> Add every document to support your request. </p>
   <%= f.button :submit %>
 <% end %>
