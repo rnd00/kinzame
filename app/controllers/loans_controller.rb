@@ -7,6 +7,14 @@ class LoansController < ApplicationController
     #but only for the user when pundit will be install
   end
 
+  def results
+    if params[:query].present?
+      @movies = Movie.where(title: params[:query])
+    else
+      @movies = Movie.all
+    end
+  end
+
   def show
     authorize @loan
   end
