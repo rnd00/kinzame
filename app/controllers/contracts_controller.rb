@@ -1,5 +1,5 @@
 class ContractsController < ApplicationController
-  before_action :set_contract, only: [:show, :edit, :update, :repaid_loan, :repaid_lender]
+  before_action :set_contract, only: [:show, :edit, :update, :repaid_lender]
   before_action :set_loan, only: [:new, :create, :edit, :update]
   skip_before_action :authenticate_user!, only: %i(index)
   #to do: add actions for sorting
@@ -45,10 +45,11 @@ class ContractsController < ApplicationController
   end
 
   def repaid_loan
+    @contract = Contract.find(params[:contract_id])
     authorize @contract
     @contract.repaid_loan!
     @contract.save
-    redirect_to loan_contracts_path
+    redirect_to dashboard_path
   end
 
   def approve
