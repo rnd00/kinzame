@@ -31,6 +31,12 @@
   }
 }
 
+.btn-blocky {
+  border-radius: 0;
+  background-color: $green;
+  color: $white;
+}
+
 .btn-new-loan {
   background-color: $white;
   border-radius: 30px;

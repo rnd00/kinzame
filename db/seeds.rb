@@ -16,6 +16,7 @@ User.create!(first_name: "Shinzo", last_name: "Abe", email: "admin@kinzame.com",
 User.create!(first_name: "Adil", last_name: "Omary", email: "lender@kinzame.com", password: "123456", wallet: "750000", lender: true)
 User.create!(first_name: "Rich", last_name: "Guy", email: "borrower@kinzame.com", password: "123123", wallet: "0", lender: false)
 
+
 puts "...finished"
 
 puts "generating 10 lenders"
@@ -32,7 +33,7 @@ puts '...finished'
 puts "seeding lenders with loan types"
 lenders = User.where(lender: true)
 lenders.each do |lender|
-  10.times do
+  3.times do
     loan = Loan.create!( amount: rand(1..10) * 10000,
                     user: lender,
                     duration: rand(10..60),
@@ -43,7 +44,7 @@ end
 puts "...finished"
 
 puts 'making 50 borrowers'
-50.times do
+10.times do
   User.create!(email: Faker::Internet.email,
               password: "123123",
               first_name: Faker::Name.first_name,
@@ -58,7 +59,7 @@ borrowers = User.where(lender: false)
 puts "creating contracts and assigning them to loans and borrowers"
 loans = Loan.all
 loans.each do |loan|
-  rand(1..5).times do
+  rand(2).times do
     contract = Contract.create!(
       description: Faker::Lorem.words(number: 4).join(" "),
       due_date: Date.today + (1..30).to_a.sample,

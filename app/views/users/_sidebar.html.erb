@@ -1,13 +1,11 @@
 <div class="sidenav">
   <% if current_user.lender %>
-
     <p class= "wallet">
       <%= link_to wallet_path do %>
         <i class="fas fa-wallet">+</i>
       <% end %>
       <span id='wallet'> <%= number_to_currency(current_user.money_available, unit: '￥', precision: 0) %></span>
     </p>
-
     <%= link_to "Offer a Loan", new_loan_path, class: "btn btn-new-loan"  %>
   <% end %>
   <h3 class="sidebar-title">Your Loans</h3>
