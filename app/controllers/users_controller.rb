@@ -8,7 +8,12 @@ class UsersController < ApplicationController
     #Add by Adil
     @borrower_active = @contracts.where(approved: true)
     @borrower_history = @contracts.where(repaid_lender:true)
-
     authorize @contracts
+  end
+
+  def become_lender
+    authorize current_user
+    current_user.become_lender!
+    redirect_to dashboard_path
   end
 end

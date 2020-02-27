@@ -15,6 +15,11 @@ class User < ApplicationRecord
     self.contracts.where(repaid_loan: true).empty?
   end
 
+  def become_lender!
+    self.lender = true
+    self.save
+  end
+
   def money_available
     total_amount = loans.joins(:contracts).where('repaid_loan = false').sum(&:amount)
     self.wallet - total_amount
