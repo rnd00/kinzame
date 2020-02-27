@@ -9,6 +9,7 @@ class UsersController < ApplicationController
   end
 
   def become_lender
+    authorize current_user
     current_user.become_lender!
     redirect_to dashboard_path
   end
