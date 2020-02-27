@@ -71,6 +71,7 @@ class ContractsController < ApplicationController
     @contract.rejected!
     @contract.save
     redirect_to dashboard_path
+    flash[:notice] = "Loan Rejected"
   end
 
   private
