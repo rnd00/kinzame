@@ -1,10 +1,12 @@
 .contract-wrapper {
-  margin-top: 16px;
-  margin-left: 180px;
-  background-color: $white;
-  width: 75vw;
-  box-shadow: 4px 4px 8px 1px rgba(0,0,0,0.1);
+  // margin-top: 16px;
+  // margin-left: 180px;
+  // background-color: $white;
+  margin: 16px auto;
+  max-width: 750px;
+  // box-shadow: 4px 4px 8px 1px rgba(0,0,0,0.1);
 }
+
 .loan {
   display: flex;
   flex-direction: row;
@@ -16,9 +18,16 @@
   padding: $spacer * 3;
   background-color: $white;
   border-left: 8px solid $light-blue;
+  box-shadow: 4px 4px 8px 1px rgba(0,0,0,0.1);
   & p{
     margin: 0;
   }
+}
+
+.loan-dropdown{
+  background-color: $white;
+  border-radius: $border-radius * 2;
+  box-shadow: 4px 4px 8px 1px rgba(0,0,0,0.1);
 }
 
 .loan-pending {

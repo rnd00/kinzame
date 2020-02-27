@@ -57,6 +57,7 @@
   text-align: center;
   vertical-align: top;
   overflow: hidden;
+  margin-bottom: $spacer * 2 !important;
   & .fas{
     line-height: 40px;
   }
