@@ -12,19 +12,21 @@
     <button type="button" class='card loan loan-pending' data-toggle="collapse" data-target="#a-<%= pending_loan.id %>" aria-expanded="false" aria-controls="<%= pending_loan.id %>">
       <%= render "users/loan-card", contract: pending_loan %>
     </button>
-      <div class="collapse" id="a-<%= pending_loan.id %>">
-        <div class="contract-content">
-          <p>Loan description: <%= pending_loan.description%></p>
-          <div class='approval-buttons'>
-            <%= link_to contract_approve_path(pending_loan), method: "patch" , class: "btn btn-approve btn-circle m-0" do  %>
-              <i class="fas fa-check-circle"></i>
-            <% end %>
-            <%= link_to contract_rejected_path(pending_loan), method: "patch" , class: "btn btn-reject btn-circle"  do %>
-              <i class="fas fa-times-circle"></i>
-            <% end %>
-          </div>
+    <!-- collapsing function   -->
+    <div class="collapse" id="a-<%= pending_loan.id %>">
+      <div class="contract-content">
+        <p>Loan description: <%= pending_loan.description%></p>
+        <div class='approval-buttons'>
+          <%= link_to contract_approve_path(pending_loan), method: "patch" , class: "btn btn-approve btn-circle m-0" do  %>
+            <i class="fas fa-check-circle"></i>
+          <% end %>
+          <%= link_to contract_rejected_path(pending_loan), method: "patch" , class: "btn btn-reject btn-circle"  do %>
+            <i class="fas fa-times-circle"></i>
+          <% end %>
         </div>
+      </div>
     </div>
+    <!-- / collapsing function     -->
   <% end %>
   <!-- / pending loan table -->
 
