@@ -33,7 +33,11 @@ class ContractPolicy < ApplicationPolicy
     user.lender && record.loan.user == user || user.admin
   end
 
-  def contracts_index?
+  def dashboard?
+    true
+  end
+
+  def rejected?
     user.lender
   end
 end

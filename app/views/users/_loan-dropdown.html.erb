@@ -1,0 +1,36 @@
+<div class="container loan-dropdown">
+  <div class="row justify-content-center">
+    <div class="sm-col-2 col-12">
+     <h5>Reason for loan: <%= pending_loan.description %></h5>
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <div class="sm-col-2 col-6">
+     <p><%= pending_loan.user.first_name %> <%= pending_loan.user.last_name[0] %>.</p>
+    </div>
+    <div class="sm-col-4 col-6">
+      <% total = pending_loan.loan.amount + ((pending_loan.loan.amount * pending_loan.loan.interest_rate)/ 100).round %>
+      <h4>Total return: <%= number_to_currency(total, unit: '￥', precision: 0) %></h4>
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <div class="sm-col-2 col-6">
+      <p> Interest: <%= pending_loan.loan.interest_rate %> %</p>
+    </div>
+    <div class="sm-col-4 col-6">
+      <h4>Due: <%= pending_loan.loan.duration.days.since.strftime("%b %e") %></h4>
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <div class="sm-col-2 col-6">
+      <p><%= pending_loan.loan.duration %> days</p>
+    </div>
+    <div class="sm-col-4 col-6">
+      <% if !pending_loan.approved %>
+        <%= render "users/loan-approval-buttons", pending_loan: pending_loan  %>
+      <% elsif pending_loan.repaid_lender %>
+        <%= render "users/loan-paid-buttons", pending_loan: pending_loan  %>
+      <% end %>
+    </div>
+  </div>
+</div>

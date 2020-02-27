@@ -8,7 +8,7 @@
       <p>Potential return: ￥<%=
           (@loan.amount + ( @loan.amount * @loan.interest_rate / 100 )).round
           %></p>
-      <%= link_to "Back", contracts_index_path, class: "btn btn-main w-25"  %>
+      <%= link_to "Back", dashboard_path, class: "btn btn-main w-25"  %>
     </div>
   </div>
 </div>

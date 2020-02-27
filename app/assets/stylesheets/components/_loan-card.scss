@@ -24,3 +24,53 @@
 .loan-pending {
   border-left: 4px solid $yellow;
 }
+
+.loan-active {
+  background-color: $green;
+}
+
+.loan-header {
+  // setting up header
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.loan-header-pending {
+  background-color: $darken-yellow;
+}
+
+.loan-header-all {
+  background-color: $darken-light-blue;
+}
+
+.loan-dropdown {
+  margin: 0 auto;
+}
+
+.approval-buttons {
+  display: flex;
+  // width: 480px;
+  & p {
+    margin: 0 auto;
+  }
+  & .btn{
+    margin-left: $spacer * 4 !important;
+  }
+  // for checking
+  // border: 1px solid black;
+}
+
+.contract-id, .contract-amount, .contract-total, .contract-interest, .contract-due {
+  width: 100%;
+  text-align: center;
+
+  // for checking
+  // border: 1px solid black;
+}
+
+.contract-content {
+  width: 90%;
+  display:flex;
+  justify-content: space-between;
+}
+

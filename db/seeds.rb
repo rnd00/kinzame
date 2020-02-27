@@ -5,14 +5,15 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-
+puts "destroying old records"
 Contract.destroy_all
 Loan.destroy_all
 User.destroy_all
+puts "...finished"
 
-puts "Generating defauld admin@kinzame.com, lender@kinzame.com, and borrower@kinzame.com"
+puts "Generating default admin@kinzame.com, lender@kinzame.com, and borrower@kinzame.com"
 User.create!(first_name: "Shinzo", last_name: "Abe", email: "admin@kinzame.com", password: "010203", wallet: "123456", admin: true)
-User.create!(first_name: "Adil", last_name: "Omary", email: "lender@kinzame.com", password: "123456", wallet: "10000", lender: true)
+User.create!(first_name: "Adil", last_name: "Omary", email: "lender@kinzame.com", password: "123456", wallet: "750000", lender: true)
 User.create!(first_name: "Rich", last_name: "Guy", email: "borrower@kinzame.com", password: "123123", wallet: "0", lender: false)
 
 puts "...finished"
@@ -35,7 +36,7 @@ lenders.each do |lender|
     loan = Loan.create!( amount: rand(1..10) * 10000,
                     user: lender,
                     duration: rand(10..60),
-                    interest_rate: (rand(1..10) + [0, 0.5].sample)
+                    interest_rate: (rand(0..9) + [0.5, 1].sample)
                     )
   end
 end
@@ -59,7 +60,7 @@ loans = Loan.all
 loans.each do |loan|
   rand(1..5).times do
     contract = Contract.create!(
-      description: Faker::Lorem.words(number: 4),
+      description: Faker::Lorem.words(number: 4).join(" "),
       due_date: Date.today + (1..30).to_a.sample,
       loan: loan,
       approved: [true, true, true, false].sample,
@@ -84,3 +85,15 @@ repaid_contracts.each do |contract|
   contract.save
 end
 puts '...finished'
+
+puts "giving default borrower an active loan"
+default_borrower = User.find_by(first_name: "Rich")
+loan = Loan.take
+Contract.create!(
+  description: "I need some cash to make my woman happy.",
+  due_date: Date.today + (1..30).to_a.sample,
+  loan: loan,
+  approved: true,
+  user: default_borrower
+  )
+puts "...finished"
