@@ -1,3 +1,8 @@
+<% if @loans.empty? %>
+  <div class="card">
+    <h2>You don't have any loans..</h2>
+  </div>
+<% else %>
 <div class="my-5">
   <h2>All Loans</h2>
 </div>
@@ -10,4 +15,5 @@
       <%= render "users/loan-dropdown", pending_loan: contract %>
     </div>
   </div>
+<% end %>
 <% end %>

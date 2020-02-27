@@ -26,7 +26,11 @@
 }
 
 .loan-active {
-  background-color: $green;
+  border-left: 8px solid $green;
+}
+
+.loan-paid {
+  border-left: 8px solid $green;
 }
 
 .loan-header {
