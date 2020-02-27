@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :contracts
+  belongs_to :contract
   has_many :loans
   has_many :loan_contracts, through: :loans, source: :contracts
 

@@ -59,7 +59,7 @@ loans = Loan.all
 loans.each do |loan|
   rand(1..5).times do
     contract = Contract.create!(
-      description: Faker::Lorem.words(number: 4),
+      description: Faker::Lorem.words(number: 4).join(" "),
       due_date: Date.today + (1..30).to_a.sample,
       loan: loan,
       approved: [true, true, true, false].sample,
@@ -84,3 +84,15 @@ repaid_contracts.each do |contract|
   contract.save
 end
 puts '...finished'
+
+puts "giving default borrower an active loan"
+default_borrower = User.find_by(first_name: "Rich")
+loan = Loan.take
+Contract.create!(
+  description: "I need some cash to make my woman happy.",
+  due_date: Date.today + (1..30).to_a.sample,
+  loan: loan,
+  approved: true,
+  user: default_borrower
+  )
+puts "...finished"
