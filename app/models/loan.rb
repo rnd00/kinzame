@@ -4,5 +4,6 @@ class Loan < ApplicationRecord
 
   validates :amount, :interest_rate, :duration, presence: true
   validates :duration, numericality: { only_integer: true }
-  validates :amount, :interest_rate, numericality: true
+  validates :amount, numericality: { only_integer: true, less_than_or_equal_to: 100000}
+  validates :interest_rate, numericality: { less_than_or_equal_to: 10 }
 end
