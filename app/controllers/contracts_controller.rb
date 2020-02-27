@@ -93,6 +93,6 @@ class ContractsController < ApplicationController
   end
 
   def contract_params
-    params.require(:contract).permit(:description, :user_id, :loan_id)
+    params.require(:contract).permit(:description, :user_id, :loan_id, :photo)
   end
 end
