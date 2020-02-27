@@ -4,4 +4,12 @@ class UserPolicy < ApplicationPolicy
       scope.all
     end
   end
+
+  def charge_wallet?
+    true
+  end
+
+  def wallet?
+    true
+  end
 end

@@ -9,9 +9,21 @@ class UsersController < ApplicationController
   end
 
   def charge_wallet
-    # select the user's wallet and add the input
-    current_user.wallet + params[...]
     # update the value
-    current_user.update(wallet: new_wallet_amount)
+    # redirect
+    authorize current_user
+    current_user.update(user_params)
+    redirect_to dashboard_path
   end
+
+  def wallet
+    authorize current_user
+  end
+
+  private
+
+  def user_params
+    params.require(:user).permit(:wallet)
+  end
+
 end
