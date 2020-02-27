@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   root to: "pages#home"
   get 'dashboard', to: 'users#dashboard', as: 'dashboard'
+  get 'results', to: 'loans#results', as: 'results'
 
   resources :loans do
     resources :contracts, only: [:index, :new, :create]
