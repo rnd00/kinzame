@@ -1,5 +1,5 @@
 <div class="sidenav">
-  <% if current_user.lender %>
+  <% if current_user.lender && @current_user.wallet >= 10000 %>
     <p class= "wallet"><i class="fas fa-wallet"></i> <span id='wallet'>￥ <%= current_user.money_available %></span></p>
     <%= link_to "Offer a Loan", new_loan_path, class: "btn btn-new-loan"  %>
   <% end %>

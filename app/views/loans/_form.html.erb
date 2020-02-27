@@ -9,7 +9,9 @@
       <i>￥</i>
     </div>
   </div>
-    <p class="amount-details">(￥10,000 ~ <%= "#{number_to_currency(@current_user.wallet, unit: "￥", precision: 0)}" %>)</p>
+  <% if @current_user.wallet >= 10000 %>
+    <p class="amount-details">(The maximum amount is <%= "#{number_to_currency(@current_user.wallet, unit: "￥", precision: 0)}" %>)</p>
+  <% end %>
   <div class="form-inline loan-form-inline">
     <%= f.label :duration, "Duration (days):" %>
     <%= f.input :duration, collection: [7, 14, 30, 60, 90], label: "Duration (days)", include_blank: false, label: false, class: "loan-input loan-duration" %>
@@ -21,5 +23,7 @@
       <i>%</i>
     </div>
   </div>
-  <%= f.button :submit, class: "btn btn-approve w-100" %>
+  <div <%= "hidden" unless @current_user.wallet >=10000 %>>
+    <%= f.button :submit, class: "btn btn-approve w-100" %>
+  </div>
 <% end %>
