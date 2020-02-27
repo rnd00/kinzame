@@ -1,4 +1,6 @@
 <%= simple_form_for([@loan, @contract]) do |f| %>
-  <%= f.input :description %>
-  <%= f.button :submit %>
+  <div class="form-inline contract-form-inline">
+    <%= f.input :description, label: "Reason for loan" %>
+  </div>
+  <%= f.button :submit, class: "btn btn-approve w-100" %>
 <% end %>

@@ -23,7 +23,7 @@ class ContractsController < ApplicationController
     @contract.loan = @loan
     @contract.user = current_user
     if @contract.save
-      redirect_to loan_contract_path(id: @contract.id)
+      redirect_to contract_path(id: @contract.id)
     else
       render :new
     end
@@ -38,7 +38,7 @@ class ContractsController < ApplicationController
   def update
     authorize @contract
     if @contract.update(contract_params)
-      redirect_to loan_contract_path(id: @contract.id)
+      redirect_to contract_path(id: @contract.id)
     else
       render :edit
     end
