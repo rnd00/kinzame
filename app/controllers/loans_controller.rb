@@ -1,6 +1,6 @@
 class LoansController < ApplicationController
   before_action :set_loan, only: %i(show edit update destroy)
-  skip_before_action :authenticate_user!, only: %i(index show)
+  skip_before_action :authenticate_user!, only: %i(index show results)
 
   def index
     @loans = policy_scope(Loan)
@@ -80,9 +80,4 @@ class LoansController < ApplicationController
     params.require(:loan).permit(:due_date, :amount, :duration, :interest_rate)
   end
 
-  # def total_price(loan)
-  #   amount = loan.contract.amount
-  #   interest = loan.contract.interest_rate.to_f / 100
-  #   days = (loan.due_date - loan.created_at).to_f
-  # end
 end

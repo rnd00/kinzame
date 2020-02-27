@@ -4,4 +4,8 @@ class UserPolicy < ApplicationPolicy
       scope.all
     end
   end
+
+  def become_lender?
+    user.no_loan?
+  end
 end
