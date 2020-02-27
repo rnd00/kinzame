@@ -7,7 +7,7 @@
   </button>
   <div class="collapse" id="a-<%= contract.id %>">
     <div class="contract-content">
-      <p>Loan description: <%= contract.description%></p>
+      <%= render "users/loan-dropdown", pending_loan: contract %>
     </div>
   </div>
 <% end %>
