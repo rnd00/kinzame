@@ -9,9 +9,11 @@ class LoansController < ApplicationController
 
   def results
     if params[:query].present?
-      @movies = Loan.where(amount: params[:query])
+      @loans = Loan.where(amount: params[:query])
+      authorize @loans
     else
-      @movies = Loan.all
+      @loans = Loan.all
+      authorize @loans
     end
   end
 
