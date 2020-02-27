@@ -1,27 +1,28 @@
 <div class="container">
   <div class="row">
-    <div class="col-4">
+    <div class="sm-col-2 col-4">
      <p><%= pending_loan.user.first_name %> <%= pending_loan.user.last_name[0] %>.</p>
     </div>
-    <div class="col-8">
+    <div class="sm-col-4 col-8">
       <% total = pending_loan.loan.amount + ((pending_loan.loan.amount * pending_loan.loan.interest_rate)/ 100).round %>
       <h3>Total return: <%= number_to_currency(total, unit: '￥', precision: 0) %></h3>
     </div>
   </div>
   <div class="row">
-    <div class="col-4">
+    <div class="sm-col-2 col-4">
       <em>Interest: <%= pending_loan.loan.interest_rate %> %</em>
     </div>
-    <div class="col-8">
+    <div class="sm-col-4 col-8">
       <h3>Due: <%= pending_loan.loan.duration.days.since.strftime("%b %e") %></h3>
     </div>
   </div>
   <div class="row">
-    <div class="col-4">
+    <div class="sm-col-2 col-4">
       <p><%= pending_loan.loan.duration %> days</p>
     </div>
-    <div class="col-8">
+    <div class="sm-col-4 col-8">
       <div class='approval-buttons'>
+        <p>Approve?</p>
           <%= link_to contract_approve_path(pending_loan), method: "patch" , class: "btn btn-approve btn-circle m-0 p-0" do  %>
             <i class="fas fa-check-circle"></i>
           <% end %>
