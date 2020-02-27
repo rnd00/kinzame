@@ -1,0 +1,13 @@
+<div class="my-5">
+  <h2>All Loans</h2>
+</div>
+<% @contracts.each do |contract| %>
+  <button class='card loan' data-toggle="collapse" data-target="#a-<%= contract.id %>" aria-expanded="false" aria-controls="<%= contract.id %>">
+    <%= render "users/loan-card", contract: contract %>
+  </button>
+  <div class="collapse" id="a-<%= contract.id %>">
+    <div class="contract-content">
+      <p>Loan description: <%= contract.description%></p>
+    </div>
+  </div>
+<% end %>

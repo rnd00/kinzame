@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="card-columns my-5">
+    <% @loans.each do |loan| %>
+      <%# codes  %>
+      <% total_amt = (loan.amount + (loan.amount * loan.interest_rate / 100)).round %>
+      <% due_until = loan.duration.days.since.strftime("%b %e") %>
+      <% due_days_count = loan.duration %>
+      <%# / codes  %>
+      <%= link_to new_loan_contract_path(loan_id: loan.id) do %>
+        <div class="card card-body text-center" id="card-search-loan">
+          <h3 class="card-title"><%= "#{number_to_currency(total_amt, unit: "￥", precision: 0)}" %></h3>
+          <p>Amount: <%= "#{number_to_currency(loan.amount, unit: "￥", precision: 0)}" %></p>
+          <p>Interest: <%= loan.interest_rate %>%</p>
+          <p>Due on: <%= "#{due_until} (#{due_days_count} days)" %></p>
+          <!-- <p>Lender: <%= loan.user.first_name %></p> -->
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+

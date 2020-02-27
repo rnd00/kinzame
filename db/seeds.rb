@@ -35,7 +35,7 @@ lenders.each do |lender|
     loan = Loan.create!( amount: rand(1..10) * 10000,
                     user: lender,
                     duration: rand(10..60),
-                    interest_rate: (rand(1..10) + [0, 0.5].sample)
+                    interest_rate: (rand(0..9) + [0.5, 1].sample)
                     )
   end
 end

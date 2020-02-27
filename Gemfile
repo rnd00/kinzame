@@ -28,6 +28,9 @@ gem 'cloudinary', '~> 1.12.0'
 # Avatar upload for user
 gem 'carrierwave', '~> 2.0'
 
+# handling search requests
+gem 'pg_search', '~> 2.3.0'
+
 group :development do
   gem 'web-console', '>= 3.3.0'
 end
