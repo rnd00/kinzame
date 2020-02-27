@@ -11,9 +11,28 @@ class UsersController < ApplicationController
     authorize @contracts
   end
 
+  def charge_wallet
+    # update the value
+    # redirect
+    authorize current_user
+    current_user.update(user_params)
+    redirect_to dashboard_path
+  end
+
+  def wallet
+    authorize current_user
+  end
+
   def become_lender
     authorize current_user
     current_user.become_lender!
     redirect_to dashboard_path
   end
+
+  private
+
+  def user_params
+    params.require(:user).permit(:wallet)
+  end
+
 end

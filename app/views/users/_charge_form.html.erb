@@ -1,0 +1,13 @@
+<%= simple_form_for current_user, url: recharge_path  do |f| %>
+  <div class="form-inline loan-form-inline my-5">
+    <h3 class="m-auto">Your wallet balance is <%= "#{number_to_currency(current_user.wallet, unit: "￥", precision: 0)}" %></h3>
+  </div>
+  <div class="form-inline loan-form-inline">
+    <%= f.label :wallet, "Amount:" %>
+    <div class="input-icon">
+      <%= f.input :wallet, input_html: {min: 10000, max: 200000, step: 10000}, label: "Amount", placeholder: "10000", class: "loan-input loan-amount", label: false%>
+      <i>￥</i>
+    </div>
+  </div>
+  <%= f.button :submit, class: "btn btn-approve w-100" %>
+<% end %>

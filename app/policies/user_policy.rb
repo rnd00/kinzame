@@ -5,6 +5,14 @@ class UserPolicy < ApplicationPolicy
     end
   end
 
+  def charge_wallet?
+    true
+  end
+
+  def wallet?
+    true
+  end
+
   def become_lender?
     user.no_loan?
   end
