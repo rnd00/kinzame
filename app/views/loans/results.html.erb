@@ -1,0 +1,8 @@
+<% @loans.each do |loan| %>
+  <div class="card">
+  <h3>Loan id: <%= loan.id %></h3>
+  <p>Amount: <%= loan.amount %></p>
+  <p>Interest rate: <%= loan.interest_rate %></p>
+  <p>Lender: <%= loan.user.first_name %></p>
+  </div>
+<% end %>
