@@ -13,9 +13,8 @@ puts "...finished"
 
 puts "Generating default admin@kinzame.com, lender@kinzame.com, and borrower@kinzame.com"
 User.create!(first_name: "Shinzo", last_name: "Abe", email: "admin@kinzame.com", password: "010203", wallet: "123456", admin: true)
-User.create!(first_name: "Adil", last_name: "Omary", email: "lender@kinzame.com", password: "123456", wallet: "750000", lender: true)
+User.create!(first_name: "Adil", last_name: "Omary", email: "lender@kinzame.com", password: "123123", wallet: "200000", lender: true)
 User.create!(first_name: "Rich", last_name: "Guy", email: "borrower@kinzame.com", password: "123123", wallet: "0", lender: false)
-
 
 puts "...finished"
 
@@ -29,6 +28,18 @@ puts "generating 10 lenders"
                 )
 end
 puts '...finished'
+
+# "seeding Lender Brian with loan types"
+
+# lender_test.each do |lender|
+#   5.times do
+#     loan = Loan.create!( amount: rand(1..10) * 10000,
+#                     user: lender,
+#                     duration: rand(10..60),
+#                     interest_rate: (rand(0..9) + [0.5, 1].sample)
+#                     )
+#   end
+# end
 
 puts "seeding lenders with loan types"
 lenders = User.where(lender: true)

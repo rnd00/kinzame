@@ -52,15 +52,15 @@ class ContractsController < ApplicationController
     authorize @contract
     @contract.approve!
     @contract.save
-    subtract_approved(@contract)
+    # subtract_approved(@contract)
     redirect_to dashboard_path
     flash[:notice] = "Loan Approved"
   end
 
-  def subtract_approved(contract)
-    new_wallet_amount = current_user.wallet - contract.loan.amount
-    current_user.update(wallet: new_wallet_amount)
-  end
+  # def subtract_approved(contract)
+  #   new_wallet_amount = current_user.wallet - contract.loan.amount
+  #   current_user.update(wallet: new_wallet_amount)
+  # end
 
   def repaid_lender
     @contract = Contract.find(params[:contract_id])

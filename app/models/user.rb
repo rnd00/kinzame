@@ -22,7 +22,7 @@ class User < ApplicationRecord
   end
 
   def money_available
-    total_amount = loans.joins(:contracts).where('repaid_loan = false').sum(&:amount)
+    total_amount = loans.joins(:contracts).where('repaid_loan = false AND approved = true').sum(&:amount)
     self.wallet - total_amount
   end
 
