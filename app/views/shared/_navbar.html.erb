@@ -1,11 +1,13 @@
 <div class="navbar fixed-top navbar-expand-sm navbar-light navbar-lewagon">
   <div class="navbar-logo">
-    <%= link_to "/dashboard", class: "navbar-brand" do %>
+    <%= link_to "/", class: "navbar-brand" do %>
       <%= image_tag "logo.png" %>
       <% if current_user && current_user.lender %>
         <p class="logo-text"> Kinzame-Lend</p>
       <% elsif current_user %>
         <p class="logo-text"> Kinzame-Borrow</p>
+      <% else %>
+        <p class="logo-text"> Kinzame</p>
       <% end %>
     <% end %>
   </div>
