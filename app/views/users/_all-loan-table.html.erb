@@ -5,7 +5,7 @@
 <% else %>
   <div class="container">
     <div class="my-5">
-      <h2>All Loans</h2>
+      <h2>My Loans</h2>
     </div>
     <% @contracts.each do |contract| %>
       <button class='card loan' data-toggle="collapse" data-target="#all-<%= contract.id %>" aria-expanded="false" aria-controls="<%= contract.id %>">
