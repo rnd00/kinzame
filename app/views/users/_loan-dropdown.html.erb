@@ -26,12 +26,12 @@
       <% if policy(pending_loan).approve? %>
         <% if !pending_loan.approved %>
           <%= render "users/loan-approval-buttons", pending_loan: pending_loan  %>
-            <!-- SUBTRACT APPROVED CONTRACT FROM WALLET -->
+          <!-- SUBTRACT APPROVED CONTRACT FROM WALLET -->
         <% elsif pending_loan.repaid_lender %>
           <%= render "users/loan-paid-buttons", pending_loan: pending_loan  %>
         <% end %>
       <% end %>
-      <% unless pending_loan.repaid_lender && !current_user.lender %>
+      <% if !pending_loan.repaid_lender && !current_user.lender %>
         <%= render "users/loan-repay-buttons", pending_loan: pending_loan  %>
       <% end %>
     </div>
