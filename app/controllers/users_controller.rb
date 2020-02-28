@@ -11,11 +11,17 @@ class UsersController < ApplicationController
     authorize @contracts
   end
 
-  def charge_wallet
-    # update the value
-    # redirect
+  def add_in_wallet
     authorize current_user
-    current_user.update(user_params)
+    new_wallet = user_params[:wallet].to_i + user_params[:old_wallet].to_i
+    current_user.update(wallet: new_wallet)
+    redirect_to dashboard_path
+  end
+
+  def subtract_wallet
+    authorize current_user
+    new_wallet = user_params[:wallet].to_i - user_params[:old_wallet].to_i
+    current_user.update(wallet: new_wallet)
     redirect_to dashboard_path
   end
 
@@ -32,7 +38,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:wallet)
+    params.require(:user).permit(:wallet, :old_wallet)
   end
 
 end

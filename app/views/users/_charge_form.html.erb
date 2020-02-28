@@ -6,6 +6,7 @@
     <%= f.label :wallet, "Amount:" %>
     <div class="input-icon">
       <%= f.input :wallet, input_html: {min: 10000, max: 200000, step: 10000}, label: "Amount", placeholder: "10000", class: "loan-input loan-amount", label: false%>
+      <%= f.input :old_wallet, as: :hidden, input_html: { value: current_user.wallet } %>
       <i>￥</i>
     </div>
   </div>
