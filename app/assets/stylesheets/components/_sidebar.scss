@@ -26,14 +26,14 @@
 
 .sidebar-active{
   background-color: $light-grey;
-  border-bottom-left-radius: 30px;
-  border-top-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+  border-top-right-radius: 30px;
 }
 /* When you mouse over the navigation links, change their color */
 .sidenav a:hover {
   background-color: #93b1c9;
-  border-top-left-radius: 30px;
-  border-bottom-left-radius: 30px;
+  border-top-right-radius: 30px;
+  border-bottom-right-radius: 30px;
 }
 
 
