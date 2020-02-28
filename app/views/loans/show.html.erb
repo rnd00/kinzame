@@ -2,7 +2,7 @@
   <div class="loan-container w-50">
     <h1 class="text-center m-5">Loan # <%= @loan.id %></h1>
     <div class="card p-5 w-75 mx-auto">
-      <h3 class="card-title"><%= "#{number_to_currency(@loan.amount, unit: "￥", precision: 0)}" %></h3>
+      <h3 class="card-title text-center"><%= "#{number_to_currency(@loan.amount, unit: "￥", precision: 0)}" %></h3>
       <p>Interest Rate: <%= @loan.interest_rate %>%</p>
       <p>Duration: <%= @loan.duration %> Days</p>
       <p>Potential return: ￥<%=
