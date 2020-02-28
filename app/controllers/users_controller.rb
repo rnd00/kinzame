@@ -18,12 +18,12 @@ class UsersController < ApplicationController
     redirect_to dashboard_path
   end
 
-  def subtract_wallet
-    authorize current_user
-    new_wallet = user_params[:wallet].to_i - user_params[:old_wallet].to_i
-    current_user.update(wallet: new_wallet)
-    redirect_to dashboard_path
-  end
+  # def subtract_wallet
+  #   authorize current_user
+  #   new_wallet = user_params[:wallet].to_i - user_params[:old_wallet].to_i
+  #   current_user.update(wallet: new_wallet)
+  #   redirect_to dashboard_path
+  # end
 
   def wallet
     authorize current_user
