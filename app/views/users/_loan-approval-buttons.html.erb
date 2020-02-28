@@ -1,6 +1,7 @@
 <div class='approval-buttons'>
   <h5>Approve?</h5>
   <%= link_to contract_approve_path(pending_loan), method: "patch" , class: "btn btn-approve btn-circle m-0 p-0" do  %>
+  <!-- SUBTRACT APPROVED CONTRACT FROM WALLET -->
     <i class="fas fa-check-circle"></i>
   <% end %>
   <%= link_to contract_rejected_path(pending_loan), method: "patch" , class: "btn btn-reject btn-circle m-0 p-0"  do %>

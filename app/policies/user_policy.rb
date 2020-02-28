@@ -5,7 +5,11 @@ class UserPolicy < ApplicationPolicy
     end
   end
 
-  def charge_wallet?
+  def add_in_wallet?
+    true
+  end
+
+  def subtract_wallet?
     true
   end
 
@@ -14,6 +18,6 @@ class UserPolicy < ApplicationPolicy
   end
 
   def become_lender?
-    user.no_loan?
+    !user.has_loan?
   end
 end

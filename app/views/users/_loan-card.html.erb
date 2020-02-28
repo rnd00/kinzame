@@ -1,23 +1,37 @@
 <% status = "" %>
-<% if contract.approved == false %>
-  <% status = " wants to borrow" %>
-<% elsif contract.repaid_loan %>
-  <% status = " borrowed" %>
-<% elsif contract.rejected %>
-<% status = " was rejected ->" %>
+<% if current_user.lender %>
+  <% name = "#{contract.user.first_name} #{contract.user.last_name[0]}." %>
+  <% status_paid = "has sent payment for"  %>
+  <% if contract.approved == false %>
+    <% status = " wants to borrow" %>
+  <% elsif contract.repaid_loan %>
+    <% status = " borrowed" %>
+  <% elsif contract.rejected %>
+    <% status = " was rejected ->" %>
+  <% else %>
+    <% status = " is borrowing" %>
+  <% end %>
 <% else %>
-  <% status = " is borrowing" %>
+  <% name = "You" %>
+  <% status_paid = "have paid back"  %>
+  <% if contract.approved == false %>
+    <% status = " requested to borrow" %>
+  <% elsif contract.repaid_loan %>
+    <% status = " borrowed" %>
+  <% elsif contract.rejected %>
+    <% status = " were rejected ->" %>
+  <% else %>
+    <% status = " are borrowing" %>
+  <% end %>
 <% end %>
 <% if contract.repaid_lender %>
   <div class="contract-amount">
-    <p><%= contract.user.first_name %> <%= contract.user.last_name[0] %>. has sent payment for ￥<%= contract.loan.amount %> </p>
+    <p><%= name %> <%= status_paid %> ￥<%= contract.loan.amount %> </p>
     <i class="fas fa-ellipsis-v"></i>
   </div>
 <% else %>
   <div class="contract-amount">
-    <p><%= contract.user.first_name %> <%= contract.user.last_name[0] %>.<%= status %> ￥<%= contract.loan.amount %> over <%= contract.loan.duration %> days.</p>
+    <p><%= name %> <%= status %> ￥<%= contract.loan.amount %> over <%= contract.loan.duration %> days.</p>
     <i class="fas fa-ellipsis-v"></i>
   </div>
 <% end %>
-
-

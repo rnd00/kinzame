@@ -13,12 +13,16 @@ class ContractPolicy < ApplicationPolicy
   # repaid_lender - Only a borrower can approve his own contract(attached to him)
   # repaid_loan - Only a lender can approve his own contract.
 
+  def new?
+    true
+  end
+
   def show?
     record.user == user || user.admin
   end
 
   def create?
-    user.no_loan? || user.admin
+    !user.has_loan? || user.admin
   end
 
   def approve?
@@ -38,7 +42,7 @@ class ContractPolicy < ApplicationPolicy
   end
 
   def rejected?
-    user.lender
+    user.lender || user.admin
   end
 end
 
