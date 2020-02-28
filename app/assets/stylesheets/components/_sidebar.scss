@@ -8,7 +8,7 @@
   height: 100vh;
   background-color: $white;
   overflow-x: hidden; /* Disable horizontal scroll */
-  margin-top: 75px;
+  margin-top: 43px;
   border-radius: $border-radius;
   // padding: $spacer * 3 0;
   // box-shadow: 1px 1px 8px 1px rgba(0,0,0,0.35);
@@ -25,7 +25,7 @@
 }
 
 .sidebar-active{
-  background-color: $grey;
+  background-color: $light-grey;
   border-bottom-left-radius: 30px;
   border-top-left-radius: 30px;
 }
@@ -41,6 +41,14 @@
 @media screen and (max-height: 450px) {
   .sidenav {padding-top: 15px;}
   .sidenav a {font-size: 18px;}
+}
+
+@media screen and (max-width: 550px) {
+  .sidenav {
+    padding-top: 15px;
+    width: 100px;
+  }
+  .sidenav a {font-size: 12px;}
 }
 
 .sidebar-title{

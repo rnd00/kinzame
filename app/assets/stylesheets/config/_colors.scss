@@ -3,7 +3,7 @@
 // For example:
 $blue: #007fff;
 $light-blue: #bfd7ea;
-$grey: #c0c0c6;
+$grey: #1f1c2c;
 $light-grey: #EEEEEE;
 $dark-grey: #59595b;
 $yellow: #f4dead;
@@ -14,6 +14,8 @@ $white: #F8F8FF;
 $black: #000000;
 
 // darken
-
 $darken-yellow: darken($yellow, 30%);
 $darken-light-blue: darken($light-blue, 30%);
+
+// subtle-dark
+$subtle-dark-light-grey: darken($light-grey, 2%);

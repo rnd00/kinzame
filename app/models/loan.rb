@@ -11,6 +11,6 @@ class Loan < ApplicationRecord
   pg_search_scope :search_by_amount,
     against: [ :amount],
     using: {
-      tsearch: { prefix: true } # <-- now `superman batm` will return something!
+      tsearch: { prefix: true }
     }
 end
