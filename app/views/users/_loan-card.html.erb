@@ -1,7 +1,7 @@
 <% status = "" %>
 <% if current_user.lender %>
   <% name = "#{contract.user.first_name} #{contract.user.last_name[0]}." %>
-  <%= status_paid = "has sent payment for"  %>
+  <% status_paid = "has sent payment for"  %>
   <% if contract.approved == false %>
     <% status = " wants to borrow" %>
   <% elsif contract.repaid_loan %>
