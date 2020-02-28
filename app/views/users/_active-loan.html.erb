@@ -12,14 +12,16 @@
       <div class="contract-content">
         <p>Loan description: <%= active_loan.description%></p>
       </div>
-      <div class='approval-buttons'>
-        <%= link_to contract_approve_path(active_loan), method: "patch" , class: "btn btn-approve btn-circle m-0 p-0" do  %>
-          <i class="fas fa-check-circle"></i>
-        <% end %>
-        <%= link_to contract_rejected_path(active_loan), method: "patch" , class: "btn btn-reject btn-circle m-0 p-0"  do %>
-          <i class="fas fa-times-circle"></i>
-        <% end %>
-      </div>
+      <% if policy(Contract).approve? %>
+        <div class='approval-buttons'>
+          <%= link_to contract_approve_path(active_loan), method: "patch" , class: "btn btn-approve btn-circle m-0 p-0" do  %>
+            <i class="fas fa-check-circle"></i>
+          <% end %>
+          <%= link_to contract_rejected_path(active_loan), method: "patch" , class: "btn btn-reject btn-circle m-0 p-0"  do %>
+            <i class="fas fa-times-circle"></i>
+          <% end %>
+        </div>
+      <% end %>
     </div>
     <!-- / collapsing function     -->
   <% end %>
