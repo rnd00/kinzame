@@ -25,8 +25,6 @@ class ContractsController < ApplicationController
     end
   end
 
-
-
   def edit
     authorize @contract
   end
