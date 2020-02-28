@@ -1,12 +1,12 @@
 <div class="container loan-dropdown">
   <div class="row justify-content-center">
     <div class="sm-col-2 col-12">
-     <h5>Reason for loan: <%= pending_loan.description %></h5>
+      <h5>Reason for loan: <%= pending_loan.description %></h5>
     </div>
   </div>
   <div class="row justify-content-center">
     <div class="sm-col-2 col-6">
-     <p>Borrower: <%= pending_loan.user.first_name %> <%= pending_loan.user.last_name[0] %>.</p>
+      <p>Borrower: <%= pending_loan.user.first_name %> <%= pending_loan.user.last_name[0] %>.</p>
     </div>
     <div class="sm-col-4 col-6">
       <% total = pending_loan.loan.amount + ((pending_loan.loan.amount * pending_loan.loan.interest_rate)/ 100).round %>
@@ -29,6 +29,9 @@
         <% elsif pending_loan.repaid_lender %>
           <%= render "users/loan-paid-buttons", pending_loan: pending_loan  %>
         <% end %>
+      <% end %>
+      <% unless pending_loan.repaid_lender && !current_user.lender %>
+        <%= render "users/loan-repay-buttons", pending_loan: pending_loan  %>
       <% end %>
     </div>
   </div>

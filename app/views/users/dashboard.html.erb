@@ -17,9 +17,8 @@
   <%= render "all-loan-table" %>
   <!-- / all contracts table -->
   <% if policy(current_user).become_lender? %>
-    <%= link_to "become a lender", become_lender_path, method: 'patch' %>
+    <%= link_to "become a lender", become_lender_path, class: "btn btn-primary m-5", method: 'patch' %>
   <% else %>
     <p class='btn btn-secondary'>Become lender</p>
   <% end %>
-</div>
 </div>
