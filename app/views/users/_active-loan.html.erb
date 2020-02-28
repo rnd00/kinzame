@@ -1,29 +1,19 @@
 <% unless @borrower_active.empty? %>
-<div class="container">
-  <div class="my-5">
-    <h2>Active Loan</h2>
-  </div>
-  <% @contracts.where(repaid_lender: false, approved: true).each do |active_loan| %>
-    <button type="button" class='card loan loan-active' data-toggle="collapse" data-target="#a-<%= active_loan.id %>" aria-expanded="false" aria-controls="<%= active_loan.id %>">
-      <%= render "users/loan-card", contract: active_loan %>
-    </button>
-    <!-- collapsing function   -->
-    <div class="collapse" id="a-<%= active_loan.id %>">
-      <div class="contract-content">
-        <p>Loan description: <%= active_loan.description%></p>
-      </div>
-      <% if policy(Contract).approve? %>
-        <div class='approval-buttons'>
-          <%= link_to contract_approve_path(active_loan), method: "patch" , class: "btn btn-approve btn-circle m-0 p-0" do  %>
-            <i class="fas fa-check-circle"></i>
-          <% end %>
-          <%= link_to contract_rejected_path(active_loan), method: "patch" , class: "btn btn-reject btn-circle m-0 p-0"  do %>
-            <i class="fas fa-times-circle"></i>
-          <% end %>
-        </div>
-      <% end %>
+  <div class="container">
+    <div class="my-5">
+      <h2>Active Loan</h2>
     </div>
-    <!-- / collapsing function     -->
-  <% end %>
-</div>
+    <% @contracts.where(repaid_lender: false, approved: true).each do |active_loan| %>
+      <button type="button" class='card loan loan-active' data-toggle="collapse" data-target="#a-<%= active_loan.id %>" aria-expanded="false" aria-controls="<%= active_loan.id %>">
+        <%= render "users/loan-card", contract: active_loan %>
+      </button>
+      <!-- collapsing function   -->
+      <div class="collapse" id="a-<%= active_loan.id %>">
+        <div class="contract-content">
+          <%= render "users/loan-dropdown", pending_loan: active_loan %>
+        </div>
+      </div>
+      <!-- / collapsing function     -->
+    <% end %>
+  </div>
 <% end %>
