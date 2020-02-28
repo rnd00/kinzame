@@ -22,7 +22,7 @@ class ContractPolicy < ApplicationPolicy
   end
 
   def create?
-    user.has_loan? || user.admin
+    !user.has_loan? || user.admin
   end
 
   def approve?
