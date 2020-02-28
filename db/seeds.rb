@@ -13,8 +13,10 @@ puts "...finished"
 
 puts "Generating default admin@kinzame.com, lender@kinzame.com, and borrower@kinzame.com"
 User.create!(first_name: "Shinzo", last_name: "Abe", email: "admin@kinzame.com", password: "123123", wallet: "123456", admin: true)
-lender_test = [User.create!(first_name: "Brian", last_name: "Heise", email: "brian@hotmale.com", password: "123123", wallet: "120000", lender: true)]
+lender_test = [User.create!(first_name: "Brian", last_name: "Heise", email: "brian@hotmale.com", password: "123123", wallet: "40000", lender: true)]
 User.create!(first_name: "Adil", last_name: "Omary", email: "adil@gstring.com", password: "123123", wallet: "0", lender: false)
+User.create!(first_name: "John", last_name: "Smith", email: "1@1.com", password: "123123", wallet: "0", lender: false)
+User.create!(first_name: "Sandra", last_name: "French", email: "2@2.com", password: "123123", wallet: "0", lender: false)
 
 puts "...finished"
 
@@ -33,7 +35,7 @@ puts "...finished"
 
 lender_test.each do |lender|
   2.times do
-    loan = Loan.create!( amount: rand(1..5) * 10000,
+    loan = Loan.create!( amount: rand(1..4) * 10000,
                          user: lender,
                          duration: rand(10..60),
                          interest_rate: (rand(0..9) + [0.5, 1].sample)

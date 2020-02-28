@@ -10,6 +10,9 @@
   margin-top: 76px;
   max-width: 750px;
   // box-shadow: 4px 4px 8px 1px rgba(0,0,0,0.1);
+  .container {
+    margin-top: 32px !important;
+  }
 }
 
 @media screen and (max-width: 950px){
