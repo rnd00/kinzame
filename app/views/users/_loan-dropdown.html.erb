@@ -31,7 +31,7 @@
           <%= render "users/loan-paid-buttons", pending_loan: pending_loan  %>
         <% end %>
       <% end %>
-      <% if !pending_loan.repaid_lender && !current_user.lender %>
+      <% if !pending_loan.repaid_lender && !current_user.lender && pending_loan.approved %>
         <%= render "users/loan-repay-buttons", pending_loan: pending_loan  %>
       <% end %>
     </div>
