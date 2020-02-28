@@ -3,19 +3,19 @@
     <h2>You don't have any loans..</h2>
   </div>
 <% else %>
-<div class="container">
-  <div class="my-5">
-    <h2>All Loans</h2>
-  </div>
-  <% @contracts.each do |contract| %>
-    <button class='card loan' data-toggle="collapse" data-target="#<%= contract.id %>" aria-expanded="false" aria-controls="<%= contract.id %>">
-      <%= render "users/loan-card", contract: contract %>
-    </button>
-    <div class="collapse" id="<%= contract.id %>">
-      <div class="contract-content">
-        <%= render "users/loan-dropdown", pending_loan: contract %>
-      </div>
+  <div class="container">
+    <div class="my-5">
+      <h2>All Loans</h2>
     </div>
-  <% end %>
+    <% @contracts.each do |contract| %>
+      <button class='card loan' data-toggle="collapse" data-target="#all-<%= contract.id %>" aria-expanded="false" aria-controls="<%= contract.id %>">
+        <%= render "users/loan-card", contract: contract %>
+      </button>
+      <div class="collapse" id="all-<%= contract.id %>">
+        <div class="contract-content">
+          <%= render "users/loan-dropdown", pending_loan: contract %>
+        </div>
+      </div>
+    <% end %>
   <% end %>
 </div>
