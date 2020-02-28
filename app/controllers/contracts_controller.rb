@@ -20,6 +20,7 @@ class ContractsController < ApplicationController
     @contract.user = current_user
     if @contract.save
       redirect_to contract_path(id: @contract.id)
+      flash[:notice] = "Your request has been made"
     else
       render :new
     end

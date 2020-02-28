@@ -1,4 +1,13 @@
-<h1>Contracts Show Page</h1>
-<p>Created At: </p><%= @contract.created_at %>
-<p>Borrower name:</p> <%= @contract.user.first_name %>
-<p>Lender name:</p><%= @contract.loan.user.first_name %>
+<div class="container">
+  <div class="contract-container w-50">
+    <h1 class="text-center m-5">Loan Contract Details</h1>
+    <div class="card p-5 w-75 mx-auto">
+      <h3 class="card-title text-center"><%= "#{number_to_currency(@contract.loan.amount, unit: "￥", precision: 0)}" %></h3>
+      <h5 class="card-subtitle text-center mt-1 mb-5"><%= @contract.description %></h5>
+      <p>Requested at: <%= @contract.created_at.strftime("%B %e, %Y") %></p>
+      <p>Borrower name: <%= "#{@contract.user.first_name} #{@contract.user.last_name}" %></p>
+      <p>Lender name: <%= "#{@contract.loan.user.first_name} #{@contract.loan.user.last_name}" %></p>
+      <%= link_to "Dashboard", dashboard_path, class: "btn btn-main w-100"  %>
+    </div>
+  </div>
+</div>
