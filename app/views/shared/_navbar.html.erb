@@ -5,45 +5,45 @@
       <p class="logo-text">Kinzame</p>
     <% end %>
   </div>
-<!-- TODO Change below logic to check if current user -->
+  <!-- TODO Change below logic to check if current user -->
   <% if user_signed_in? %>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <% unless current_user.lender %>
-      <div class="d-flex flex-row my-3 mx-auto">
-        <%= form_tag results_path, class: 'form-inline mx-auto', method: :get do %>
-          <%= text_field_tag :query,
+      <% unless current_user.lender %>
+        <div class="d-flex flex-row my-3 mx-auto">
+          <%= form_tag results_path, class: 'form-inline mx-auto', method: :get do %>
+            <%= text_field_tag :query,
             params[:query],
             class: "form-control search-bar-navbar",
             placeholder: "Search loan.."
           %>
-          <%= button_tag(type: "submit", class: "btn btn-blocky btn-approve mx-3") do %>
-            <i class="fas fa-yen-sign"></i>
+            <%= button_tag(type: "submit", class: "btn btn-blocky btn-approve mx-3") do %>
+              <i class="fas fa-yen-sign"></i>
+            <% end %>
           <% end %>
-        <% end %>
-      </div>
-      <%= link_to "Become a Lender", become_lender_path, class: "btn btn-primary mx-5", method: 'patch' %>
-    <% end %>
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item dropdown">
-        <%= image_tag "https://avatars2.githubusercontent.com/u/31160338?s=460&v=4", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-          <%#= link_to "Action", "#", class: "dropdown-item" %>
-          <%#= link_to "Another action", "#", class: "dropdown-item" %>
-          <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
         </div>
-      </li>
-    </ul>
+        <%= link_to "Become a Lender", become_lender_path, class: "btn btn-primary mx-5", method: 'patch' %>
+      <% end %>
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item dropdown">
+          <i class="fas fa-bars dropdown-toggle navbar-burger" id="navbarDropdown" data-toggle="dropdown" ></i>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+            <%#= link_to "Action", "#", class: "dropdown-item" %>
+            <%#= link_to "Another action", "#", class: "dropdown-item" %>
+            <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+          </div>
+        </li>
+      </ul>
     </div>
   <% else %>
-  <div class="navbar-login">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <%= link_to "Login/Sign up", new_user_session_path, class: "btn btn-primary text-white" %>
-      </li>
-    </ul>
-  </div>
+    <div class="navbar-login">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <%= link_to "Login/Sign up", new_user_session_path, class: "btn btn-primary text-white" %>
+        </li>
+      </ul>
+    </div>
   <% end %>
 </div>
