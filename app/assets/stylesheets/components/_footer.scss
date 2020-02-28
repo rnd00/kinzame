@@ -10,7 +10,7 @@ footer {
 
 .footer {
   flex-shrink: 0;
-  background: $light-grey;
+  background: $subtle-dark-light-grey;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -18,8 +18,8 @@ footer {
   padding: 0px 50px;
   color: $black;
   font-size: 12px;
-  border-top: 1px solid $grey;
   z-index: 1;
+  // border-top: 1px solid $grey;
   // box-shadow: 0px -2px 1px 1px rgba(0,0,0,0.15);
 }
 .footer-links {
