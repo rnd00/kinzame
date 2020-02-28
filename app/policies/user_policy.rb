@@ -18,6 +18,7 @@ class UserPolicy < ApplicationPolicy
   end
 
   def become_lender?
-    !user.has_loan?
+    # !user.has_loan?
+    true
   end
 end
