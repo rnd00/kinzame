@@ -2,7 +2,11 @@
   <div class="navbar-logo">
     <%= link_to "/dashboard", class: "navbar-brand" do %>
       <%= image_tag "logo.png" %>
-      <p class="logo-text">Kinzame</p>
+      <% if current_user && current_user.lender %>
+        <p class="logo-text"> Kinzame-Lend</p>
+      <% elsif current_user %>
+        <p class="logo-text"> Kinzame-Borrow</p>
+      <% end %>
     <% end %>
   </div>
   <!-- TODO Change below logic to check if current user -->
@@ -15,10 +19,10 @@
         <div class="d-flex flex-row my-3 mx-auto">
           <%= form_tag results_path, class: 'form-inline mx-auto', method: :get do %>
             <%= text_field_tag :query,
-            params[:query],
-            class: "form-control search-bar-navbar",
-            placeholder: "Search loan.."
-          %>
+              params[:query],
+              class: "form-control search-bar-navbar",
+              placeholder: "Search loan.."
+            %>
             <%= button_tag(type: "submit", class: "btn btn-blocky btn-approve mx-3") do %>
               <i class="fas fa-yen-sign"></i>
             <% end %>
