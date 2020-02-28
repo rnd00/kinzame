@@ -27,7 +27,7 @@
         <% if !pending_loan.approved %>
           <%= render "users/loan-approval-buttons", pending_loan: pending_loan  %>
           <!-- SUBTRACT APPROVED CONTRACT FROM WALLET -->
-        <% elsif pending_loan.repaid_lender %>
+        <% elsif pending_loan.repaid_lender && !pending_loan.repaid_loan%>
           <%= render "users/loan-paid-buttons", pending_loan: pending_loan  %>
         <% end %>
       <% end %>
