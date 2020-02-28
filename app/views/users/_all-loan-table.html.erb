@@ -5,10 +5,20 @@
 <% else %>
   <div class="container">
     <div class="my-5">
-      <h2>All Loans</h2>
+      <h2>My Loans</h2>
     </div>
     <% @contracts.each do |contract| %>
-      <button class='card loan' data-toggle="collapse" data-target="#all-<%= contract.id %>" aria-expanded="false" aria-controls="<%= contract.id %>">
+      <% pending = !contract.approved %>
+      <% active = !contract.repaid_lender && !contract.repaid_loan %>
+      <% loan_class = "" %>
+      <% if pending %>
+        <% loan_class = "loan-pending" %>
+      <% elsif active %>
+        <% loan_class = "loan-active" %>
+      <% else %>
+        <% loan_class = "loan" %>
+      <% end %>
+      <button class="card loan <%= "#{loan_class}" %> " data-toggle="collapse" data-target="#all-<%= contract.id %>" aria-expanded="false" aria-controls="<%= contract.id %>">
         <%= render "users/loan-card", contract: contract %>
       </button>
       <div class="collapse" id="all-<%= contract.id %>">

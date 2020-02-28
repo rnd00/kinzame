@@ -1,6 +1,6 @@
-<div class="contract-wrapper">
   <% if current_user.lender %>
-    <%= render "sidebar" %>
+  <%= render "sidebar" %>
+  <div class="contract-wrapper">
     <!-- payment-confirm loan table -->
     <%= render "payment-confirm-loan-table" %>
     <!-- /payment-confirm loan table -->
@@ -8,18 +8,19 @@
     <%= render "pending-loan-table" %>
     <!-- / pending loan table -->
   <% else %>
-    <!-- active contracts table -->
-    <%= render "pending-loan-table" %>
-    <%= render "active-loan" %>
-    <!-- / active contracts table -->
-  <% end %>
-  <!-- all contracts table -->
-  <%= render "all-loan-table" %>
-  <!--  removed for presentation -->
-  <!-- / all contracts table -->
-  <%# if policy(current_user).become_lender? %>
-  <!-- #link_to "become a lender", become_lender_path, class: "btn btn-primary m-5", method: 'patch' %> -->
-  <!-- #else  -->
-  <!--  <p class='btn btn-secondary'>Become lender</p> -->
-  <%# end %>
-</div>
+    <div class="contract-wrapper">
+      <!-- active contracts table -->
+      <%= render "pending-loan-table" %>
+      <%= render "active-loan" %>
+      <!-- / active contracts table -->
+    <% end %>
+    <!-- all contracts table -->
+    <%= render "all-loan-table" %>
+    <!--  removed for presentation -->
+    <!-- / all contracts table -->
+    <%# if policy(current_user).become_lender? %>
+    <!-- #link_to "become a lender", become_lender_path, class: "btn btn-primary m-5", method: 'patch' %> -->
+    <!-- #else  -->
+    <!--  <p class='btn btn-secondary'>Become lender</p> -->
+    <%# end %>
+  </div>
