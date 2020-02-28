@@ -21,7 +21,8 @@
             <%= text_field_tag :query,
               params[:query],
               class: "form-control search-bar-navbar",
-              placeholder: "Search loan.."%>
+              placeholder: "Search loan.."
+            %>
             <%= button_tag(type: "submit", class: "btn btn-blocky btn-approve mx-3") do %>
               <i class="fas fa-yen-sign"></i>
             <% end %>
@@ -31,7 +32,7 @@
       <% end %>
       <ul class="navbar-nav mr-auto">
         <li class="nav-item dropdown">
-          <%= image_tag "https://avatars2.githubusercontent.com/u/31160338?s=460&v=4", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+          <i class="fas fa-bars dropdown-toggle navbar-burger" id="navbarDropdown" data-toggle="dropdown" ></i>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
             <%#= link_to "Action", "#", class: "dropdown-item" %>
             <%#= link_to "Another action", "#", class: "dropdown-item" %>
