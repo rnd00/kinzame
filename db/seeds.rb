@@ -12,9 +12,9 @@ User.destroy_all
 puts "...finished"
 
 puts "Generating default admin@kinzame.com, lender@kinzame.com, and borrower@kinzame.com"
-User.create!(first_name: "Shinzo", last_name: "Abe", email: "admin@kinzame.com", password: "010203", wallet: "123456", admin: true)
-User.create!(first_name: "Adil", last_name: "Omary", email: "lender@kinzame.com", password: "123456", wallet: "750000", lender: true)
-User.create!(first_name: "Rich", last_name: "Guy", email: "borrower@kinzame.com", password: "123123", wallet: "0", lender: false)
+User.create!(first_name: "Shinzo", last_name: "Abe", email: "admin@kinzame.com", password: "010203", wallet: "999999", admin: true)
+User.create!(first_name: "Brian", last_name: "Heise", email: "lender@kinzame.com", password: "123456", wallet: "200000", lender: true)
+User.create!(first_name: "Adil", last_name: "Omary", email: "borrower@kinzame.com", password: "123123", wallet: "0", lender: false)
 
 
 puts "...finished"

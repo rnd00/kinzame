@@ -52,6 +52,7 @@ class ContractsController < ApplicationController
     @contract.approve!
     @contract.save
     subtract_approved(@contract)
+    authorize current_user
     redirect_to dashboard_path
     flash[:notice] = "Loan Approved"
   end

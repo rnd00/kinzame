@@ -17,6 +17,10 @@ class UserPolicy < ApplicationPolicy
     true
   end
 
+  def approve?
+    true
+  end
+
   def become_lender?
     user.no_loan?
   end
