@@ -10,10 +10,13 @@
     <% @contracts.each do |contract| %>
       <% pending = !contract.approved %>
       <% active = !contract.repaid_lender && !contract.repaid_loan %>
+      <% paid_loan = contract.repaid_lender && !contract.repaid_loan %>
       <% loan_class = "" %>
       <% if pending %>
         <% loan_class = "loan-pending" %>
       <% elsif active %>
+        <% loan_class = "loan-active" %>
+      <% elsif paid_loan %>
         <% loan_class = "loan-active" %>
       <% else %>
         <% loan_class = "loan" %>
