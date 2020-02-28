@@ -1,4 +1,4 @@
-<% if @loans.empty? %>
+<% if @contracts.empty? %>
   <div class="card loan">
     <h2>You don't have any loans..</h2>
   </div>
@@ -8,10 +8,10 @@
     <h2>All Loans</h2>
   </div>
   <% @contracts.each do |contract| %>
-    <button class='card loan' data-toggle="collapse" data-target="#a-<%= contract.id %>" aria-expanded="false" aria-controls="<%= contract.id %>">
+    <button class='card loan' data-toggle="collapse" data-target="#<%= contract.id %>" aria-expanded="false" aria-controls="<%= contract.id %>">
       <%= render "users/loan-card", contract: contract %>
     </button>
-    <div class="collapse" id="a-<%= contract.id %>">
+    <div class="collapse" id="<%= contract.id %>">
       <div class="contract-content">
         <%= render "users/loan-dropdown", pending_loan: contract %>
       </div>

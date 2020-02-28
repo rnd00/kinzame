@@ -1,6 +1,6 @@
-<%= render "sidebar" %>
 <div class="contract-wrapper">
   <% if current_user.lender %>
+    <%= render "sidebar" %>
       <!-- payment-confirm loan table -->
     <%= render "payment-confirm-loan-table" %>
       <!-- /payment-confirm loan table -->
@@ -9,6 +9,7 @@
       <!-- / pending loan table -->
   <% else %>
     <!-- active contracts table -->
+    <%= render "pending-loan-table" %>
     <%= render "active-loan" %>
     <!-- / active contracts table -->
   <% end %>
