@@ -42,7 +42,7 @@ class ContractPolicy < ApplicationPolicy
   end
 
   def rejected?
-    user.lender
+    user.lender || user.admin
   end
 end
 
