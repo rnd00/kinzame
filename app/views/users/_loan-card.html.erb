@@ -11,10 +11,12 @@
 <% if contract.repaid_lender %>
   <div class="contract-amount">
     <p><%= contract.user.first_name %> <%= contract.user.last_name[0] %>. has sent payment for ￥<%= contract.loan.amount %> </p>
+    <i class="fas fa-ellipsis-v"></i>
   </div>
 <% else %>
   <div class="contract-amount">
     <p><%= contract.user.first_name %> <%= contract.user.last_name[0] %>.<%= status %> ￥<%= contract.loan.amount %> over <%= contract.loan.duration %> days.</p>
+    <i class="fas fa-ellipsis-v"></i>
   </div>
 <% end %>
 

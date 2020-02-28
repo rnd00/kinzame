@@ -6,7 +6,7 @@ class UsersController < ApplicationController
     @completed = @contracts.where(repaid_loan: true)
     @paid = @contracts.where(repaid_lender: true, repaid_loan: false)
     #Add by Adil
-    @borrower_active = @contracts.where(approved: true)
+    @borrower_active = @contracts.where(approved: true, repaid_lender: false)
     @borrower_history = @contracts.where(repaid_lender:true)
     authorize @contracts
   end

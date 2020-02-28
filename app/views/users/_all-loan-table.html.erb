@@ -1,13 +1,21 @@
-<div class="my-5">
-  <h2>All Loans</h2>
-</div>
-<% @contracts.each do |contract| %>
-  <button class='card loan' data-toggle="collapse" data-target="#a-<%= contract.id %>" aria-expanded="false" aria-controls="<%= contract.id %>">
-    <%= render "users/loan-card", contract: contract %>
-  </button>
-  <div class="collapse" id="a-<%= contract.id %>">
-    <div class="contract-content">
-      <%= render "users/loan-dropdown", pending_loan: contract %>
-    </div>
+<% if @loans.empty? %>
+  <div class="card loan">
+    <h2>You don't have any loans..</h2>
   </div>
-<% end %>
+<% else %>
+<div class="container">
+  <div class="my-5">
+    <h2>All Loans</h2>
+  </div>
+  <% @contracts.each do |contract| %>
+    <button class='card loan' data-toggle="collapse" data-target="#a-<%= contract.id %>" aria-expanded="false" aria-controls="<%= contract.id %>">
+      <%= render "users/loan-card", contract: contract %>
+    </button>
+    <div class="collapse" id="a-<%= contract.id %>">
+      <div class="contract-content">
+        <%= render "users/loan-dropdown", pending_loan: contract %>
+      </div>
+    </div>
+  <% end %>
+  <% end %>
+</div>
