@@ -23,7 +23,7 @@
   </div>
   <div class="row justify-content-center">
     <div class="sm-col-4 col-6">
-      <% if policy(Contract).approve? %>
+      <% if policy(pending_loan).approve? %>
         <% if !pending_loan.approved %>
           <%= render "users/loan-approval-buttons", pending_loan: pending_loan  %>
         <% elsif pending_loan.repaid_lender %>
