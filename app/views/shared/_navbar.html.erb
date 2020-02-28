@@ -12,6 +12,18 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <% unless current_user.lender %>
+      <div class="d-flex flex-row my-3 mx-auto">
+        <%= form_tag results_path, class: 'form-inline mx-auto', method: :get do %>
+          <%= text_field_tag :query,
+            params[:query],
+            class: "form-control search-bar-navbar",
+            placeholder: "Search loan.."
+          %>
+          <%= button_tag(type: "submit", class: "btn btn-blocky btn-approve mx-3") do %>
+            <i class="fas fa-yen-sign"></i>
+          <% end %>
+        <% end %>
+      </div>
       <%= link_to "Become a Lender", become_lender_path, class: "btn btn-primary mx-5", method: 'patch' %>
     <% end %>
     <ul class="navbar-nav mr-auto">
