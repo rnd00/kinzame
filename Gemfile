@@ -26,7 +26,7 @@ gem 'pundit'
 gem 'cloudinary', '~> 1.12.0'
 # Protecting data in env file
 # Avatar upload for user
-gem 'carrierwave', '~> 2.0'
+gem 'carrierwave', '~> 2.1'
 
 # handling search requests
 gem 'pg_search', '~> 2.3.0'
